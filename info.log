@@ -1,0 +1,110 @@
+ 2022-08-14 19:49:00,393 DEBUG :: This message is only important when debugging the program
+2022-08-14 19:49:00,394 INFO :: This message just shows basic information
+2022-08-14 19:49:00,394 WARNING :: This message is about something you should pay attention to
+2022-08-14 19:49:00,394 ERROR :: This message helps to debug an error that occurred in your program
+2022-08-14 21:58:38,530 DEBUG :: This message is only important when debugging the program
+2022-08-14 21:58:38,531 INFO :: This message just shows basic information
+2022-08-14 21:58:38,531 WARNING :: This message is about something you should pay attention to
+2022-08-14 21:58:38,531 ERROR :: This message helps to debug an error that occurred in your program
+2022-08-14 21:58:38,531 INFO :: Hello from the Binance connector
+2022-08-14 22:32:50,214 INFO :: This is logged in all cases
+2022-08-23 20:08:11,675 INFO :: This is logged in all cases
+2022-08-23 20:08:27,597 INFO :: This is logged in all cases
+2022-08-23 20:08:27,598 INFO :: this is only logged if we execute the main.py file. 
+2022-08-25 00:59:27,324 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-25 00:59:27,480 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-25 00:59:27,488 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-25 00:59:27,737 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 01:46:08,210 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 01:46:08,472 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 01:46:08,476 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 01:46:08,714 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 15:34:12,070 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 15:34:12,228 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 15:34:12,235 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 15:34:12,495 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 15:35:53,745 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 15:35:53,970 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 15:35:53,976 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 15:35:54,227 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 15:38:39,026 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 15:38:39,392 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 15:38:39,400 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 15:38:39,687 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 15:47:07,227 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 15:47:07,440 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 15:47:07,445 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 15:47:07,699 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 15:56:25,875 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 15:56:26,056 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 15:56:26,066 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 15:56:26,377 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 16:07:04,179 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 16:07:04,390 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 16:07:04,395 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 16:07:04,670 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 16:08:33,658 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 16:08:33,840 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 16:08:33,851 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 16:08:34,109 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 17:15:55,812 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 17:15:55,991 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 17:15:55,999 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 17:15:56,258 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 17:17:39,721 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 17:17:39,924 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 17:17:39,933 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 17:17:40,199 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 17:27:38,396 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 17:27:38,584 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 17:27:38,594 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 17:27:38,859 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-26 17:44:02,150 DEBUG :: Starting new HTTP connection (1): www.bitmex.com:80
+2022-08-26 17:44:02,353 DEBUG :: http://www.bitmex.com:80 "GET /api/v1/instrument/active HTTP/1.1" 301 None
+2022-08-26 17:44:02,362 DEBUG :: Starting new HTTPS connection (1): www.bitmex.com:443
+2022-08-26 17:44:02,696 DEBUG :: https://www.bitmex.com:443 "GET /api/v1/instrument/active HTTP/1.1" 200 None
+2022-08-29 16:40:44,613 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:41:12,728 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:43:08,844 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:43:08,997 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.com:443
+2022-08-29 16:43:09,405 DEBUG :: https://testnet.binancefutures.com:443 "GET /fapi/v1/exchangeInfo HTTP/1.1" 302 0
+2022-08-29 16:43:09,528 DEBUG :: Starting new HTTP connection (1): ww25.testnet.binancefutures.com:80
+2022-08-29 16:43:09,596 DEBUG :: http://ww25.testnet.binancefutures.com:80 "GET /fapi/v1/exchangeInfo?subid1=20220830-0643-09e8-979d-12eeab86fc41 HTTP/1.1" 200 None
+2022-08-29 16:46:48,851 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:46:48,863 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.com:443
+2022-08-29 16:46:49,258 DEBUG :: https://testnet.binancefutures.com:443 "GET /fapi/v1/exchangeInfo HTTP/1.1" 302 0
+2022-08-29 16:46:49,265 DEBUG :: Starting new HTTP connection (1): ww25.testnet.binancefutures.com:80
+2022-08-29 16:46:49,330 DEBUG :: http://ww25.testnet.binancefutures.com:80 "GET /fapi/v1/exchangeInfo?subid1=20220830-0646-491d-b11d-ea90660103fe HTTP/1.1" 200 None
+2022-08-29 16:48:31,013 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:48:31,139 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.comfapi:443
+2022-08-29 16:48:48,219 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:48:48,231 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.com:443
+2022-08-29 16:48:48,701 DEBUG :: https://testnet.binancefutures.com:443 "GET /fapi/v1/exchangeInfo HTTP/1.1" 302 0
+2022-08-29 16:48:48,707 DEBUG :: Starting new HTTP connection (1): ww25.testnet.binancefutures.com:80
+2022-08-29 16:48:48,773 DEBUG :: http://ww25.testnet.binancefutures.com:80 "GET /fapi/v1/exchangeInfo?subid1=20220830-0648-48e7-9308-f10ac91c65b8 HTTP/1.1" 200 None
+2022-08-29 16:50:33,760 INFO :: Binance Futures Client successfully initialized
+2022-08-29 16:50:33,770 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.com:443
+2022-08-29 16:50:34,195 DEBUG :: https://testnet.binancefutures.com:443 "GET /fapi/v1/exchangeInfo HTTP/1.1" 302 0
+2022-08-29 16:50:34,206 DEBUG :: Starting new HTTP connection (1): ww25.testnet.binancefutures.com:80
+2022-08-29 16:50:34,270 DEBUG :: http://ww25.testnet.binancefutures.com:80 "GET /fapi/v1/exchangeInfo?subid1=20220830-0650-34e4-8058-b2ac436936d4 HTTP/1.1" 200 None
+2022-12-26 13:17:53,275 INFO :: Binance Futures Client successfully initialized
+2022-12-26 13:17:53,422 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.com:443
+2022-12-26 13:17:53,826 DEBUG :: https://testnet.binancefutures.com:443 "GET /fapi/v1/exchangeInfo HTTP/1.1" 302 0
+2022-12-26 13:17:53,961 DEBUG :: Starting new HTTP connection (1): ww25.testnet.binancefutures.com:80
+2022-12-26 13:17:54,029 DEBUG :: http://ww25.testnet.binancefutures.com:80 "GET /fapi/v1/exchangeInfo?subid1=20221227-0517-53c0-9821-f52141c90bfa HTTP/1.1" 200 None
+2022-12-26 13:43:44,232 INFO :: Binance Futures Client successfully initialized
+2022-12-26 13:43:44,247 DEBUG :: Starting new HTTPS connection (1): testnet.binancefutures.com:443
+2022-12-26 13:43:44,713 DEBUG :: https://testnet.binancefutures.com:443 "GET /fapi/v1/exchangeInfo HTTP/1.1" 302 0
+2022-12-26 13:43:44,725 DEBUG :: Starting new HTTP connection (1): ww25.testnet.binancefutures.com:80
+2022-12-26 13:43:44,792 DEBUG :: http://ww25.testnet.binancefutures.com:80 "GET /fapi/v1/exchangeInfo?subid1=20221227-0543-44f7-abc9-93f5af5d2223 HTTP/1.1" 200 None
+2022-12-26 13:48:39,938 INFO :: Binance Futures Client successfully initialized
+2022-12-26 13:50:20,542 INFO :: Binance Futures Client successfully initialized
+2022-12-26 13:52:30,509 INFO :: Binance Futures Client successfully initialized
+2022-12-26 14:27:18,165 INFO :: Binance Futures Client successfully initialized
+2022-12-26 14:28:02,011 INFO :: Binance Futures Client successfully initialized
+2022-12-26 15:06:50,458 INFO :: Binance Futures Client successfully initialized
+2022-12-26 15:07:27,528 INFO :: Binance Futures Client successfully initialized
+2022-12-26 15:10:02,112 INFO :: Binance Futures Client successfully initialized
+2022-12-26 16:18:54,059 INFO :: Binance Futures Client successfully initialized
+2022-12-26 16:20:15,818 INFO :: Binance Futures Client successfully initialized
+2022-12-26 16:21:16,554 INFO :: Binance Futures Client successfully initialized
