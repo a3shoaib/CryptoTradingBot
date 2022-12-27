@@ -23,7 +23,8 @@ logger.addHandler(file_handler)
 
 if __name__ == '__main__':
 
-    binance = BinanceFuturesClient(True)
+    binance = BinanceFuturesClient("b83cef8f8b8ac8775fdd177d9c6839151464b504411e43c2dec129a4589983f8"
+    , "8ef2a26264aba2b227df4e4f164e1e465bf08557e043743e78e26388d01e1eb0", True)
     print(binance.get_historical_candles("BTCUSDT", "1h"))
 
     root = tk.Tk()

@@ -1,24 +1,41 @@
 import logging
 import requests
+import time
+
+from urllib.parse import urlencode
+
+import hmac
+import hashlib
+
+
 
 
 logger = logging.getLogger()
 
 
 class BinanceFuturesClient:
-    def __init__(self, testnet):
+    def __init__(self, public_key, secret_key, testnet):
         if testnet:
             self.base_url = "https://testnet.binancefuture.com"
         else:
             self.base_url = "https://fapi.binance.com"
 
+        self.public_key = public_key
+        self.secret_key = secret_key
+
+        self.headers = {'X-MBX-APIKEY': self.public_key}
+
+
         self.prices = dict()
 
         logger.info("Binance Futures Client successfully initialized")
 
+    def generate_signature(self, data):
+        return hmac.new(self.secret_key.encode(), urlencode(data).encode(), hashlib.sha256).hexdigest()
+
     def make_request(self, method, endpoint, data):
         if method == "GET":
-            response = requests.get(self.base_url + endpoint, params=data)
+            response = requests.get(self.base_url + endpoint, params=data, headers=self.headers)
         else:
             raise ValueError
 
@@ -69,3 +86,19 @@ class BinanceFuturesClient:
                 self.prices[symbol]['ask'] = float(ob_data['askPrice'])
 
         return self.prices[symbol]
+
+    def get_balances (self): # Get current balances on account
+        data = dict()
+        data['timestamp'] = int(time.time() * 1000)
+        data['signature'] = self.generate_signature(data)
+
+        balances =
+
+        account_data = self.make_request("GET", "/fapi/v1/account", data)
+        return
+    def place_order (self):
+        return
+    def cancel_order (self):
+        return
+    def get_order_status(self):
+        return
