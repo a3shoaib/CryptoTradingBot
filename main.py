@@ -2,7 +2,8 @@ import tkinter as tk
 import logging
 import os
 
-from connectors.binance_futures import BinanceFuturesClient
+from binance_futures import BinanceFuturesClient
+from bitmex import BitmexClient
 
 
 logger = logging.getLogger()
@@ -22,14 +23,17 @@ logger.addHandler(stream_handler)
 logger.addHandler(file_handler)
 
 
+
 if __name__ == '__main__':
 
-    binance = BinanceFuturesClient(os.environ.get('publickey')
-    , os.environ.get('privatekey'), True)
+    binance = BinanceFuturesClient("public key"
+    ,"private key", True)
     #print(binance.get_balances())
     #print(binance.place_order("BTCUSDT", "BUY", 0.01, "LIMIT", 15000, "GTC"))
     #print(binance.get_order_status("BTCUSDT", order_id))
     #print(binance.cancel_order("BTCUSDT", order_id))
+
+    bitmex = BitmexClient("public key", "private key", True)
 
 
     root = tk.Tk()
