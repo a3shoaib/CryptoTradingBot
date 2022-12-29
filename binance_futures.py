@@ -33,11 +33,13 @@ class BinanceFuturesClient:
 
         self._headers = {'X-MBX-APIKEY': self._public_key}
 
-# Instance variable containing dictionary of contracts and balances
+        # Instance variable containing dictionary of contracts and balances
         self.contracts = self.get_contracts()
         self.balances = self.get_balances()
 
         self.prices = dict()
+
+        self.logs = []
 
         self._ws_id = 1
         self._ws = None
@@ -46,6 +48,10 @@ class BinanceFuturesClient:
         t.start()
 
         logger.info("Binance Futures Client successfully initialized")
+
+    def _add_log(self, msg: str):
+        logger.info("%s", msg)
+        self.logs.append({"log": msg, "displayed": False})
 
     def _generate_signature(self, data: typing.Dict) -> str:
         return hmac.new(self._secret_key.encode(), urlencode(data).encode(), hashlib.sha256).hexdigest()
@@ -104,7 +110,7 @@ class BinanceFuturesClient:
 
         if raw_candles is not None:
             for c in raw_candles:
-                candles.append(Candle(c, "binance"))
+                candles.append(Candle(c, interval, "binance"))
 
         return candles
 
@@ -141,11 +147,11 @@ class BinanceFuturesClient:
         data = dict()
         data['symbol'] = contract.symbol
         data['side'] = side
-        data['quantity'] = quantity
+        data['quantity'] = round(round(quantity / contract.lot_size) * contract.lot_size, 8)
         data['type'] = order_type
 
         if price is not None:
-            data['price'] = price
+            data['price'] = round(round(price / contract.tick_size) * contract.tick_size, 8)
 
         if tif is not None:
             data['timeInForce'] = tif
@@ -195,7 +201,6 @@ class BinanceFuturesClient:
 
         return order_status
 
-
     # Starts a connection and assigns which function is called when an event occurs
     def _start_ws(self):
         self._ws = websocket.WebSocketApp(self._wss_url, on_open=self._on_open, on_close=self._on_close,
@@ -234,7 +239,6 @@ class BinanceFuturesClient:
                 else:
                     self.prices[symbol]['bid'] = float(data['b'])
                     self.prices[symbol]['ask'] = float(data['a'])
-
 
     # Class method to suscribe to a channel to recieve market data
     def subscribe_channel(self, contracts: typing.List[Contract], channel: str):

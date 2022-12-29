@@ -12,9 +12,9 @@ import websocket
 import json
 
 import threading
+from collections import defaultdict
 
 from models import *
-
 
 logger = logging.getLogger()
 
@@ -37,12 +37,18 @@ class BitmexClient:
         self.contracts = self.get_contracts()
         self.balances = self.get_balances()
 
-        self.prices = dict()
+        self.prices = defaultdict(lambda: {'bid': None, 'ask': None})
+
+        self.logs = []
 
         t = threading.Thread(target=self._start_ws)
         t.start()
 
         logger.info("Bitmex Client successfully initialized")
+
+    def _add_log(self, msg: str):
+        logger.info("%s", msg)
+        self.logs.append({"log": msg, "displayed": False})
 
     def _generate_signature(self, method: str, endpoint: str, expires: str, data: typing.Dict) -> str:
 
@@ -120,27 +126,28 @@ class BitmexClient:
         data['partial'] = True
         data['binSize'] = timeframe
         data['count'] = 500
+        data['reverse'] = True
 
         raw_candles = self._make_request("GET", "/api/v1/trade/bucketed", data)
 
         candles = []
 
         if raw_candles is not None:
-            for c in raw_candles:
-                candles.append(Candle(c, "bitmex"))
+            for c in reversed(raw_candles):
+                candles.append(Candle(c, timeframe, "bitmex"))
 
         return candles
 
     def place_order(self, contract: Contract, order_type: str, quantity: int, side: str, price=None, tif=None) -> OrderStatus:
-        data = dict()
-
-        data['symbol'] = contract.symbol
-        data['side'] = side.capitalize()
-        data['orderQty'] = quantity
-        data['ordType'] = order_type.capitalize()
+        data = {
+            'symbol': contract.symbol,
+            'side': side.capitalize(),
+            'orderQty': round(quantity / contract.lot_size) * contract.lot_size,
+            'ordType': order_type.capitalize()
+        }
 
         if price is not None:
-            data['price'] = price
+            data['price'] = round(round(price / contract.tick_size) * contract.tick_size, 8)
 
         if tif is not None:
             data['timeInForce'] = tif
@@ -183,7 +190,7 @@ class BitmexClient:
         self._ws = websocket.WebSocketApp(self._wss_url, on_open=self._on_open, on_close=self._on_close,
                                          on_error=self._on_error, on_message=self._on_message)
 
-        # Reconnect websocket connection if disconnected
+# Reconnect websocket connection if disconnected
         while True:
             try:
                 self._ws.run_forever()
@@ -206,21 +213,24 @@ class BitmexClient:
 
         data = json.loads(msg)
 
-        if "table" in data:
-            if data['table'] == "instrument":
+        if "table" not in data:
+            return
 
-                for d in data['data']:
+        if data['table'] != "instrument":
+            return
 
-                    symbol = d['symbol']
+        for d in data['data']:
+            symbol = d['symbol']
 
-                    if symbol not in self.prices:
-                        self.prices[symbol] = {'bid': None, 'ask': None}
+            if 'bidPrice' in d:
+                self.prices[symbol]['bid'] = d['bidPrice']
+            if 'askPrice' in d:
+                self.prices[symbol]['ask'] = d['askPrice']
 
-                    if 'bidPrice' in d:
-                        self.prices[symbol]['bid'] = d['bidPrice']
-                    if 'askPrice' in d:
-                        self.prices[symbol]['ask'] = d['askPrice']
-
+            # Adding log when recieve update about XBTUSD
+            if symbol == "XBTUSD":
+                self._add_log(symbol + " " + str(self.prices[symbol]['bid']) + " / " +
+                str(self.prices[symbol]['ask']))
 
     # Class method to subscribe to a channel to recieve market data
     def subscribe_channel(self, topic: str):
