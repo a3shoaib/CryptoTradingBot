@@ -227,10 +227,6 @@ class BitmexClient:
             if 'askPrice' in d:
                 self.prices[symbol]['ask'] = d['askPrice']
 
-            # Adding log when recieve update about XBTUSD
-            if symbol == "XBTUSD":
-                self._add_log(symbol + " " + str(self.prices[symbol]['bid']) + " / " +
-                str(self.prices[symbol]['ask']))
 
     # Class method to subscribe to a channel to recieve market data
     def subscribe_channel(self, topic: str):
