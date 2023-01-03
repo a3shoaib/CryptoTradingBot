@@ -5,6 +5,8 @@ from styling import *
 from binance_futures import BinanceFuturesClient
 from bitmex import BitmexClient
 
+from strategies import TechnicalStrategy, BreakoutStrategy
+
 class StrategyEditor (tk.Frame):
     def __init__(self, root, binance: BinanceFuturesClient, bitmex: BitmexClient, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -212,12 +214,22 @@ class StrategyEditor (tk.Frame):
         timeframe = self.body_widgets['timeframe_var'][b_index].get()
         exchange = self.body_widgets['contract_var'][b_index].get().split("_")[1]
 
+        contract = self._exchanges[exchange].contracts[symbol]
+
         balance_pct = float(self.body_widgets['balance_pct'][b_index].get())
         take_profit = float(self.body_widgets['take_profit'][b_index].get())
         stop_loss = float(self.body_widgets['stop_loss'][b_index].get())
 
         if self.body_widgets['activation'][b_index].cget("text") == "OFF":
             # Activate strategy
+            if strat_selected == "Technical":
+                new_strategy = TechnicalStrategy(contract, exchange, timeframe, balance_pct, take_profit, stop_loss,
+                                                 self._additional_parameters[b_index])
+            elif strat_selected == "Breakout":
+                new_strategy = BreakoutStrategy(contract, exchange, timeframe, balance_pct, take_profit, stop_loss,
+                                                 self._additional_parameters[b_index])
+            else:
+                return
 
             # Other buttons will be deactivated to prevent user from changing values while strategy is running
             for param in self._base_params:
@@ -239,3 +251,4 @@ class StrategyEditor (tk.Frame):
 
             self.body_widgets["activation"][b_index].config(bg="darkred", text="OFF")
             self.root.logging_frame.add_log(f"{strat_selected} strategy on {symbol} / {timeframe} stopped")
+
