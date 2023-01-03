@@ -231,6 +231,18 @@ class StrategyEditor (tk.Frame):
             else:
                 return
 
+            # Get historical data when initializing strategy
+            new_strategy.candles = self._exchanges[exchange].get_historical_candles(contract, timeframe)
+
+            if len(new_strategy.candles) == 0:
+                self.root.logging_frame.add_log(f"No historical data retrieved for {contract.symbol}")
+                return
+
+            if exchange == "Binance":
+                self._exchanges[exchange].subscribe_channel([contract], "aggTrade")
+
+            self._exchanges[exchange].strategies[b_index] = new_strategy
+
             # Other buttons will be deactivated to prevent user from changing values while strategy is running
             for param in self._base_params:
                 code_name = param['code_name']
@@ -242,6 +254,7 @@ class StrategyEditor (tk.Frame):
             self.root.logging_frame.add_log(f"{strat_selected} strategy on {symbol} / {timeframe} started")
         else:
             # Deactivate strategy
+            del self._exchanges[exchange].strategies[b_index]
 
             for param in self._base_params:
                 code_name = param['code_name']

@@ -15,6 +15,7 @@ import threading
 
 from models import *
 
+from strategies import TechnicalStrategy, BreakoutStrategy
 
 logger = logging.getLogger()
 
@@ -38,6 +39,9 @@ class BinanceFuturesClient:
         self.balances = self.get_balances()
 
         self.prices = dict()
+
+        # After the strategy object is created and historical candles have been fetched, store strategies in each connector
+        self.strategies: typing.Dict[int, typing.Union[TechnicalStrategy, BreakoutStrategy]] = dict()
 
         self.logs = []
 
@@ -239,6 +243,9 @@ class BinanceFuturesClient:
                 else:
                     self.prices[symbol]['bid'] = float(data['b'])
                     self.prices[symbol]['ask'] = float(data['a'])
+
+            elif data['e'] == "aggTrade":
+                symbol = data['s']
 
     # Class method to suscribe to a channel to recieve market data
     def subscribe_channel(self, contracts: typing.List[Contract], channel: str):
