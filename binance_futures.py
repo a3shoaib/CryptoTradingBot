@@ -250,7 +250,8 @@ class BinanceFuturesClient:
                 # Loop through strategies
                 for key, strat in self.strategies.items():
                     if strat.contract.symbol == symbol:
-                        strat.parse_trades(float(data['p']), float(data['q']), data['T'])
+                        res = strat.parse_trades(float(data['p']), float(data['q']), data['T'])
+                        strat.check_trade(res)
 
     # Class method to suscribe to a channel to recieve market data
     def subscribe_channel(self, contracts: typing.List[Contract], channel: str):
@@ -268,3 +269,23 @@ class BinanceFuturesClient:
             logger.error("Websocket error while subscribing to %s %s updates: %s", len(contracts), channel, e)
 
         self._ws_id += 1
+
+    def get_trade_size(self, contract: Contract, price: float, balance_pct: float):
+
+        balance = self.get_balances()
+        if balance is not None:
+            if 'USDT' in balance:
+                balance = balance['USDT'].wallet_balance
+            else:
+                return None
+        else:
+            return None
+
+        # Gives USDT amount to invest, dividing by price gives quantity
+        trade_size = (balance * balance_pct / 100) / price
+
+        trade_size = round(round(trade_size / contract.lot_size) * contract.lot_size, 8)
+
+        logger.info("Binance Futures current USDT balance = %s, trade size = %s", balance, trade_size)
+
+        return trade_size

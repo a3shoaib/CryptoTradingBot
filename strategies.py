@@ -4,6 +4,7 @@
 # The two stragies will each inherit from this parent class
 
 import logging
+import time
 from typing import *
 
 import pandas as pd
@@ -18,8 +19,10 @@ TF_EQUIV = {"1m": 60, "5m": 300, "15m": 900, "30m": 1800, "1h": 3600, "4h": 1440
 
 
 class Strategy:
-    def __init__(self, contract: Contract, exchange: str, timeframe: str, balance_pct: float, take_profit: float,
+    def __init__(self, client, contract: Contract, exchange: str, timeframe: str, balance_pct: float, take_profit: float,
                  stop_loss: float):
+
+        self.client = client
 
         self.contract = contract
         self.exchange = exchange
@@ -29,10 +32,20 @@ class Strategy:
         self.take_profit = take_profit
         self.stop_loss = stop_loss
 
+        self.open_position = False
+
+
         self.candles: List[Candle] =[]
 
     # Method that parses info of the trade and decide to update the current candle
     def parse_trades(self, price: float, size: float, timestamp: int) -> str:
+
+        # Calculate differecne of current unix timestamp and timestamp of trade
+        timestamp_diff = int(time.time() * 1000) - timestamp
+        if timestamp_diff >= 2000:
+            logger.warning("%s %s: %s milliseconds of difference between the current time and the trade time",
+                           self.exchange, self.contract.symbol, timestamp_diff)
+
         # 3 cases: 1. Update the same current candle, 2. new candle, 3. new candle + missing candle
 
         last_candle = self.candles[-1]
@@ -93,10 +106,16 @@ class Strategy:
 
             return "new_candle"
 
+    def _open_position(self, signal_result: int):
+
+        trade_size = self.client.get_trade_size(self.contract, self.candles[-1].close, self.balance_pct)
+        if trade_size is None:
+            return
+
 class TechnicalStrategy(Strategy):
-    def __init__(self, contract: Contract, exchange: str, timeframe: str, balance_pct: float, take_profit: float,
+    def __init__(self, client, contract: Contract, exchange: str, timeframe: str, balance_pct: float, take_profit: float,
                  stop_loss: float, other_params: Dict):
-        super().__init__(contract, exchange, timeframe, balance_pct, take_profit, stop_loss)
+        super().__init__(client, contract, exchange, timeframe, balance_pct, take_profit, stop_loss)
 
         self._ema_fast = other_params['ema_fast']
         self._ema_slow = other_params['ema_slow']
@@ -162,11 +181,10 @@ class TechnicalStrategy(Strategy):
         # -2 and not -1 since -1 represents new candle, not the one that was just finished
         return macd_line.iloc[-2], macd_signal.iloc[-2]
 
+
     def _check_signal(self):
         macd_line, macd_signal = self._macd()
         rsi = self._rsi()
-
-        print(rsi, macd_line, macd_signal)
 
         # Have two indicator's data available
         # Long signal if the contract is oversold (below 30) and macd line is above macd signal line
@@ -177,17 +195,21 @@ class TechnicalStrategy(Strategy):
             return -1
         else:
             return 0
+    # Call the method when there is a long or short signal and no ongoing trade
+    # It will be closed when a stop loss or take profit has been reached but it may take some time to do so
+    def check_trade(self, tick_type: str):
+        if tick_type == "new candle" and not self.open_position:
+            signal_result = self._check_signal()
 
-
-
-
+            if signal_result in [-1, 1]:
+                self._open_position(signal_result)
 
 
 
 class BreakoutStrategy(Strategy):
-    def __init__(self, contract: Contract, exchange: str, timeframe: str, balance_pct: float, take_profit: float,
+    def __init__(self, client, contract: Contract, exchange: str, timeframe: str, balance_pct: float, take_profit: float,
                  stop_loss: float, other_params: Dict):
-        super().__init__(contract, exchange, timeframe, balance_pct, take_profit, stop_loss)
+        super().__init__(client, contract, exchange, timeframe, balance_pct, take_profit, stop_loss)
 
         self._min_volume = other_params['min_volume']
 
@@ -213,7 +235,10 @@ class BreakoutStrategy(Strategy):
         #     elif self.candles[-1].close < self.candles[-3].low:
         #         # Downside breakout
 
+    def check_trade(self, tick_type: str):
+        if not self.open_position:
+            signal_result = self._check_signal()
 
-
-
+            if signal_result in [-1, 1]:
+                self._open_position(signal_result)
 

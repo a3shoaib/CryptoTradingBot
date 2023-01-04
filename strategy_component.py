@@ -224,10 +224,10 @@ class StrategyEditor (tk.Frame):
         if self.body_widgets['activation'][b_index].cget("text") == "OFF":
             # Activate strategy
             if strat_selected == "Technical":
-                new_strategy = TechnicalStrategy(contract, exchange, timeframe, balance_pct, take_profit, stop_loss,
+                new_strategy = TechnicalStrategy(self._exchanges[exchange], contract, exchange, timeframe, balance_pct, take_profit, stop_loss,
                                                  self._additional_parameters[b_index])
             elif strat_selected == "Breakout":
-                new_strategy = BreakoutStrategy(contract, exchange, timeframe, balance_pct, take_profit, stop_loss,
+                new_strategy = BreakoutStrategy(self._exchanges[exchange], contract, exchange, timeframe, balance_pct, take_profit, stop_loss,
                                                  self._additional_parameters[b_index])
             else:
                 return
@@ -241,8 +241,6 @@ class StrategyEditor (tk.Frame):
 
             if exchange == "Binance":
                 self._exchanges[exchange].subscribe_channel([contract], "aggTrade")
-
-            new_strategy._check_signal()
 
             self._exchanges[exchange].strategies[b_index] = new_strategy
 
