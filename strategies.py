@@ -108,3 +108,26 @@ class BreakoutStrategy(Strategy):
 
         self._min_volume = other_params['min_volume']
 
+    # Have candlestick data, method checks signal (indicate whether or not to enter a long or short trade or do nothing)
+    # For long signal return 1, for short signal -1, and for no signal return 0
+    def _check_signal(self) -> int:
+        # Only need candles and do not need to compute an indicator
+        if self.candles[-1].close > self.candles[-2].high and self.candles[-1].volume > self._min_volume:
+            return 1
+
+        elif self.candles[-1].close < self.candles[-2].low and self.candles[-1].volume > self._min_volume:
+            return -1
+
+        else:
+            return 0
+
+        # if self.candles[-2].high < self.candles[-3].high and self.candles[-2].low > self.candles[-3].low:
+        #     if self.candles[-1].close > self.candles[-3].high:
+        #         # Upside breakout
+        #     elif self.candles[-1].close < self.candles[-3].low:
+        #         # Downside breakout
+
+
+
+
+
