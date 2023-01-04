@@ -244,8 +244,13 @@ class BinanceFuturesClient:
                     self.prices[symbol]['bid'] = float(data['b'])
                     self.prices[symbol]['ask'] = float(data['a'])
 
-            elif data['e'] == "aggTrade":
+            if data['e'] == "aggTrade":
                 symbol = data['s']
+
+                # Loop through strategies
+                for key, strat in self.strategies.items():
+                    if strat.contract.symbol == symbol:
+                        strat.parse_trades(float(data['p']), float(data['q']), data['T'])
 
     # Class method to suscribe to a channel to recieve market data
     def subscribe_channel(self, contracts: typing.List[Contract], channel: str):

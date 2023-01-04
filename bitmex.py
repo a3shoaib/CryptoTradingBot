@@ -16,6 +16,8 @@ import dateutil.parser
 import threading
 from collections import defaultdict
 
+from strategies import TechnicalStrategy, BreakoutStrategy
+
 from models import *
 
 logger = logging.getLogger()
@@ -40,6 +42,9 @@ class BitmexClient:
         self.balances = self.get_balances()
 
         self.prices = defaultdict(lambda: {'bid': None, 'ask': None})
+
+        # After the strategy object is created and historical candles have been fetched, store strategies in each connector
+        self.strategies: typing.Dict[int, typing.Union[TechnicalStrategy, BreakoutStrategy]] = dict()
 
         self.logs = []
 
@@ -237,6 +242,11 @@ class BitmexClient:
                 symbol = d['symbol']
                 # Timestamp represents time of the trade in this case
                 ts = int(dateutil.parser.isoparse(d['timestamp']).timestamp() * 1000)
+
+                # Loop through strategies
+                for key, strat in self.strategies.items():
+                    if strat.contract.symbol == symbol:
+                        strat.parse_trades(float(d['price']), float(d['size']), ts)
 
 
     # Class method to subscribe to a channel to recieve market data
