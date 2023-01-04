@@ -68,6 +68,7 @@ class StrategyEditor (tk.Frame):
         # List of dictionary to describe additional parameters depending on strategy chosen
         self._extra_params = {
             "Technical": [
+                {"code_name": "rsi_length", "name": "RSI Periods", "widget": tk.Entry, "data_type": int},
                 {"code_name": "ema_fast", "name": "MACD Fast Length", "widget": tk.Entry, "data_type": int},
                 {"code_name": "ema_slow", "name": "MACD Slow Length", "widget": tk.Entry, "data_type": int},
                 {"code_name": "ema_signal", "name": "MACD Signal Length", "widget": tk.Entry, "data_type": int},
@@ -240,6 +241,8 @@ class StrategyEditor (tk.Frame):
 
             if exchange == "Binance":
                 self._exchanges[exchange].subscribe_channel([contract], "aggTrade")
+
+            new_strategy._check_signal()
 
             self._exchanges[exchange].strategies[b_index] = new_strategy
 
