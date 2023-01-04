@@ -70,8 +70,9 @@ class Root(tk.Tk):
             try:
                 for b_index, strat in client.strategies.items():
                     for log in strat.logs:
-                        self.logging_frame.add_log(log['log'])
-                        log['displayed'] = True
+                        if not log['displayed']:
+                            self.logging_frame.add_log(log['log'])
+                            log['displayed'] = True
 
                     for trade in strat.trades:
                         if trade.time not in self._trades_frame.body_widgets['symbol']:

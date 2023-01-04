@@ -14,8 +14,6 @@ import json
 import dateutil.parser
 
 import threading
-from collections import defaultdict
-
 from strategies import TechnicalStrategy, BreakoutStrategy
 
 from models import *
@@ -41,7 +39,7 @@ class BitmexClient:
         self.contracts = self.get_contracts()
         self.balances = self.get_balances()
 
-        self.prices = defaultdict(lambda: {'bid': None, 'ask': None})
+        self.prices = dict()
 
         # After the strategy object is created and historical candles have been fetched, store strategies in each connector
         self.strategies: typing.Dict[int, typing.Union[TechnicalStrategy, BreakoutStrategy]] = dict()
@@ -91,7 +89,7 @@ class BitmexClient:
                 logger.error("Connection error while making %s request to %s: %s", method, endpoint, e)
                 return None
         else:
-            raise ValueError
+            raise ValueError ()
 
         if response.status_code == 200:
             return response.json()
@@ -223,58 +221,64 @@ class BitmexClient:
 
         data = json.loads(msg)
 
-        if "table" not in data:
-            return
+        if "table" in data:
+            if data['table'] == "instrument":
 
-        if data['table'] != "instrument":
-            return
+                for d in data['data']:
 
-        for d in data['data']:
-            symbol = d['symbol']
+                    symbol = d['symbol']
 
-            if 'bidPrice' in d:
-                self.prices[symbol]['bid'] = d['bidPrice']
-            if 'askPrice' in d:
-                self.prices[symbol]['ask'] = d['askPrice']
+                    if symbol not in self.prices:
+                        self.prices[symbol] = {'bid': None, 'ask': None}
 
-            # PNL Calculation
-            try:
-                for b_index, strat in self.strategies.items():
-                    if strat.contract.symbol == symbol:
-                        for trade in strat.trades:
-                            if trade.status == "open" and trade.entry_price is not None:
+                    if 'bidPrice' in d:
+                        self.prices[symbol]['bid'] = d['bidPrice']
+                    if 'askPrice' in d:
+                        self.prices[symbol]['ask'] = d['askPrice']
 
-                                if trade.side == "long":
-                                    price = self.prices[symbol]['bid']
-                                else:
-                                    price = self.prices[symbol]['ask']
-                                multiplier = trade.contract.multiplier
+                    # PNL Calculation
+                    try:
+                        for b_index, strat in self.strategies.items():
+                            if strat.contract.symbol == symbol:
+                                for trade in strat.trades:
+                                    if trade.status == "open" and trade.entry_price is not None:
 
-                                if trade.contract.inverse:
-                                    if trade.side == "long":
+                                        if trade.side == "long":
+                                            price = self.prices[symbol]['bid']
+                                        else:
+                                            price = self.prices[symbol]['ask']
+                                        multiplier = trade.contract.multiplier
+
                                         # From documentation
-                                        trade.pnl = (1 / trade.entry_price - 1 / price) * multiplier * trade.quantity
-                                    elif trade.side == "short":
-                                        trade.pnl = (1 / price - 1 / trade.entry_price) * multiplier * trade.quantity
-                                else:
-                                    if trade.side == "long":
-                                        trade.pnl = (price - trade.entry_price) * multiplier * trade.quantity
-                                    elif trade.side == "short":
-                                        trade.pnl = (trade.entry_price - price) * multiplier * trade.quantity
-            except RuntimeError as e:
-                logger.error("Error while looping through the Bitmex strategies: %s", e)
+                                        if trade.contract.inverse:
+                                            if trade.side == "long":
+                                                trade.pnl = (
+                                                                        1 / trade.entry_price - 1 / price) * multiplier * trade.quantity
+                                            elif trade.side == "short":
+                                                trade.pnl = (
+                                                                        1 / price - 1 / trade.entry_price) * multiplier * trade.quantity
+                                        else:
+                                            if trade.side == "long":
+                                                trade.pnl = (price - trade.entry_price) * multiplier * trade.quantity
+                                            elif trade.side == "short":
+                                                trade.pnl = (trade.entry_price - price) * multiplier * trade.quantity
+                    except RuntimeError as e:
+                        logger.error("Error while looping through the Bitmex strategies: %s", e)
 
-        if data['table'] == "trade":
-            for d in data['data']:
-                symbol = d['symbol']
-                # Timestamp represents time of the trade in this case
-                ts = int(dateutil.parser.isoparse(d['timestamp']).timestamp() * 1000)
+            if data['table'] == "trade":
 
-                # Loop through strategies
-                for key, strat in self.strategies.items():
-                    if strat.contract.symbol == symbol:
-                        res = strat.parse_trades(float(d['price']), float(d['size']), ts)
-                        strat.check_trade(res)
+                for d in data['data']:
+
+                    symbol = d['symbol']
+
+                    # Timestamp represents time of the trade in this case
+                    ts = int(dateutil.parser.isoparse(d['timestamp']).timestamp() * 1000)
+
+                    # Loop through strategies
+                    for key, strat in self.strategies.items():
+                        if strat.contract.symbol == symbol:
+                            res = strat.parse_trades(float(d['price']), float(d['size']), ts)
+                            strat.check_trade(res)
 
 
     # Class method to subscribe to a channel to recieve market data
@@ -287,7 +291,7 @@ class BitmexClient:
         try:
             self._ws.send(json.dumps(data))
         except Exception as e:
-            logger.error("Websocket error while subscribing to %s updates: %s", topic, e)
+            logger.error("Websocket error while subscribing to %s: %s", topic, e)
 
     def get_trade_size(self, contract: Contract, price: float, balance_pct: float):
 

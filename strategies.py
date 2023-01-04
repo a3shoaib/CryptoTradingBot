@@ -118,7 +118,7 @@ class Strategy:
 
             self.candles.append(new_candle)
 
-            logger.info("%s New candle for %s%s", self.exchange,self.contract.symbol, self.tf)
+            logger.info("%s New candle for %s %s", self.exchange, self.contract.symbol, self.tf)
 
             return "new_candle"
 
@@ -129,7 +129,7 @@ class Strategy:
         if order_status is not None:
             logger.info("%s order status: %s", self.exchange, order_status.status)
 
-            if order_status == "filled":
+            if order_status.status == "filled":
                 for trade in self.trades:
                     if trade.entry_id == order_id:
                         trade.entry_price = order_status.avg_price
@@ -295,7 +295,7 @@ class TechnicalStrategy(Strategy):
         if tick_type == "new candle" and not self.ongoing_position:
             signal_result = self._check_signal()
 
-            if signal_result in [-1, 1]:
+            if signal_result in [1, -1]:
                 self._open_position(signal_result)
 
 
@@ -333,6 +333,6 @@ class BreakoutStrategy(Strategy):
         if not self.ongoing_position:
             signal_result = self._check_signal()
 
-            if signal_result in [-1, 1]:
+            if signal_result in [1, -1]:
                 self._open_position(signal_result)
 

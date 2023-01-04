@@ -7,8 +7,11 @@ from bitmex import BitmexClient
 
 from strategies import TechnicalStrategy, BreakoutStrategy
 
+if typing.TYPE_CHECKING:
+    from root_component import Root
+
 class StrategyEditor (tk.Frame):
-    def __init__(self, root, binance: BinanceFuturesClient, bitmex: BitmexClient, *args, **kwargs):
+    def __init__(self, root: "Root", binance: BinanceFuturesClient, bitmex: BitmexClient, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.root = root
@@ -263,6 +266,6 @@ class StrategyEditor (tk.Frame):
                 if code_name != "activation" and "_var" not in code_name:
                     self.body_widgets[code_name][b_index].config(state=tk.NORMAL)
 
-            self.body_widgets["activation"][b_index].config(bg="darkred", text="OFF")
+            self.body_widgets['activation'][b_index].config(bg="darkred", text="OFF")
             self.root.logging_frame.add_log(f"{strat_selected} strategy on {symbol} / {timeframe} stopped")
 
