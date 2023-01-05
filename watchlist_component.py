@@ -8,6 +8,8 @@ from models import *
 from styling import *
 
 from autocomplete_widget import Autocomplete
+from scrollable_frame import ScrollableFrame
+
 
 class Watchlist (tk.Frame):
     def __init__(self, binance_contracts: typing.Dict[str, Contract], bitmex_contracts: typing.Dict[str, Contract], *args, **kwargs):
@@ -46,11 +48,25 @@ class Watchlist (tk.Frame):
         # Headers that will be on the first row
         self._headers = ["symbol", "exchange", "bid", "ask", "remove"]
 
+        self._headers_frame = tk.Frame(self._table_frame, bg=BG_COLOR)
+
+        self._col_width = 11
+
         # Loop through headers to create widgets dynamically
         for idx, h in enumerate(self._headers):
-            header = tk.Label(self._table_frame, text=h.capitalize() if h != "remove" else "", bg=BG_COLOR, fg=FG_COLOR,
-                              font=BOLD_FONT)
+            header = tk.Label(self._headers_frame, text=h.capitalize() if h != "remove" else "", bg=BG_COLOR, fg=FG_COLOR,
+                              font=GLOBAL_FONT, width=self._col_width)
             header.grid(row=0, column=idx)
+
+        # Accounts width for the space needed for the scrollbar to the right
+        header = tk.Label(self._headers_frame, text="", bg=BG_COLOR, fg=FG_COLOR,
+                          font=GLOBAL_FONT, width=2)
+        header.grid(row=0, column=len(self._headers))
+
+        self._headers_frame.pack(side=tk.TOP, anchor="nw")
+
+        self._body_frame = ScrollableFrame(self._table_frame, bg=BG_COLOR, height=250)
+        self._body_frame.pack(side=tk.TOP, fill=tk.X, anchor="nw")
 
         # Creates keys of the dictionary in the loop so that self.headers can be reused
         for h in self._headers:
@@ -58,8 +74,7 @@ class Watchlist (tk.Frame):
             if h in ["bid", "ask"]:
                 self.body_widgets[h + "_var"] = dict()
 
-        # Starts at 1 because row is 0 is occupied
-        self._body_index = 1
+        self._body_index = 0
 
     def _remove_symbol(self, b_index: int):
         # Loops through columns, selects row to delete, and removes the cells
@@ -86,31 +101,33 @@ class Watchlist (tk.Frame):
         b_index = self._body_index
 
         # Creates 4 variables
-        self.body_widgets['symbol'][b_index] = tk.Label(self._table_frame, text=symbol, bg=BG_COLOR, fg=FG_COLOR_2,
-                                                        font=GLOBAL_FONT)
+        self.body_widgets['symbol'][b_index] = tk.Label(self._body_frame.sub_frame, text=symbol, bg=BG_COLOR,
+                                                        fg=FG_COLOR_2,font=GLOBAL_FONT, width=self._col_width)
         self.body_widgets['symbol'][b_index].grid(row=b_index, column=0)
 
-        self.body_widgets['exchange'][b_index] = tk.Label(self._table_frame, text=exchange, bg=BG_COLOR, fg=FG_COLOR_2,
-                                                        font=GLOBAL_FONT)
+        self.body_widgets['exchange'][b_index] = tk.Label(self._body_frame.sub_frame, text=exchange, bg=BG_COLOR,
+                                                          fg=FG_COLOR_2,font=GLOBAL_FONT, width=self._col_width)
         self.body_widgets['exchange'][b_index].grid(row=b_index, column=1)
 
         self.body_widgets['bid_var'][b_index] = tk.StringVar()
-        self.body_widgets['bid'][b_index] = tk.Label(self._table_frame, textvariable=self.body_widgets['bid_var'][b_index],
-                                                     bg=BG_COLOR, fg=FG_COLOR_2, font=GLOBAL_FONT)
+        self.body_widgets['bid'][b_index] = tk.Label(self._body_frame.sub_frame,
+                                                     textvariable=self.body_widgets['bid_var'][b_index],
+                                                     bg=BG_COLOR, fg=FG_COLOR_2, font=GLOBAL_FONT, width=self._col_width)
         self.body_widgets['bid'][b_index].grid(row=b_index, column=2)
 
         self.body_widgets['ask_var'][b_index] = tk.StringVar()
-        self.body_widgets['ask'][b_index] = tk.Label(self._table_frame, textvariable=self.body_widgets['ask_var'][b_index],
-                                                     bg=BG_COLOR, fg=FG_COLOR_2, font=GLOBAL_FONT)
+        self.body_widgets['ask'][b_index] = tk.Label(self._body_frame.sub_frame,
+                                                     textvariable=self.body_widgets['ask_var'][b_index],
+                                                     bg=BG_COLOR, fg=FG_COLOR_2, font=GLOBAL_FONT, width=self._col_width)
 
         # When needed to modify values of bid and ask label from another module, access body_widgets and
         # bid_var or ask_var key and then use set() method on it
         self.body_widgets['ask'][b_index].grid(row=b_index, column=3)
 
         # Adds a button when a symbol is added to the watchlist
-        self.body_widgets['remove'][b_index] = tkmac.Button(self._table_frame, text="X", borderless=True,
+        self.body_widgets['remove'][b_index] = tkmac.Button(self._body_frame.sub_frame, text="X", borderless=True,
                                                      bg="darkred", fg=FG_COLOR, font=GLOBAL_FONT,
-                                                     command=lambda: self._remove_symbol(b_index))
+                                                     command=lambda: self._remove_symbol(b_index), width=4)
         self.body_widgets['remove'][b_index].grid(row=b_index, column=4)
 
 
