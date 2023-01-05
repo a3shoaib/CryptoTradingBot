@@ -1,6 +1,7 @@
 # interface
 
 import tkinter as tk
+from tkinter.messagebox import askquestion
 import logging
 
 from bitmex import BitmexClient
@@ -21,6 +22,9 @@ class Root(tk.Tk):
 
         self.binance = binance
         self.bitmex = bitmex
+
+        self.title("Crypto Trading Bot")
+        self.protocol("WM_DELETE_WINDOW", self._ask_before_close)
 
 
         self.title("Crypto Trading Bot")
@@ -49,6 +53,17 @@ class Root(tk.Tk):
 
         # Call update method once after root component is initiated
         self._update_ui()
+
+    def _ask_before_close(self):
+        result = askquestion("Confirmation", "Do you want to exit the application?")
+        if result == "yes":
+            self.binance.reconnect = False
+            self.bitmex.reconnect = False
+            self.binance.ws.close()
+            self.bitmex.ws.close()
+
+            self.destroy()
+
 
     # Checks periodically for new logs to add
     def _update_ui(self):
