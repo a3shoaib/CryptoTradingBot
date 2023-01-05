@@ -3,6 +3,7 @@ import typing
 import tkmacosx as tkmac
 
 from styling import *
+from scrollable_frame import ScrollableFrame
 from binance_futures import BinanceFuturesClient
 from bitmex import BitmexClient
 
@@ -45,7 +46,10 @@ class StrategyEditor (tk.Frame):
         self.body_widgets = dict()
 
         # Headers that will be on the first row
-        self._headers = ["Strategy", "Contract", "Timeframe", "Balance %", "TP %", "SL %"]
+        # Update: added headers in _base_params
+        # self._headers = ["Strategy", "Contract", "Timeframe", "Balance %", "TP %", "SL %"]
+
+        self._headers_frame = tk.Frame(self._table_frame, bg=BG_COLOR)
 
         self._additional_parameters = dict()
         self._extra_input = dict()
@@ -53,23 +57,23 @@ class StrategyEditor (tk.Frame):
         # Dictionary to describe each of the widgets to add and put it in a list
         self._base_params = [
             {"code_name": "strategy_type", "widget": tk.OptionMenu, "data_type": str,
-             "values": ["Technical", "Breakout"], "width": 10},
+             "values": ["Technical", "Breakout"], "width": 7, "header": "Strategy"},
             {"code_name": "contract", "widget": tk.OptionMenu, "data_type": str, "values": self._all_contracts
-             , "width": 15},
+             , "width": 15, "header": "  Contract"},
             {"code_name": "timeframe", "widget": tk.OptionMenu, "data_type": str, "values": self._all_timeframes
-                , "width": 7},
-            {"code_name": "balance_pct", "widget": tk.Entry, "data_type": float, "width": 7},
-            {"code_name": "take_profit", "widget": tk.Entry, "data_type": float, "width": 7},
-            {"code_name": "stop_loss", "widget": tk.Entry, "data_type": float, "width": 7},
+                , "width": 15, "header": "                  Timeframe"},
+            {"code_name": "balance_pct", "widget": tk.Entry, "data_type": float, "width": 18, "header": "                          Balance %"},
+            {"code_name": "take_profit", "widget": tk.Entry, "data_type": float, "width": 14, "header": "                           TP %"},
+            {"code_name": "stop_loss", "widget": tk.Entry, "data_type": float, "width": 14, "header": "                          SL %"},
             # Configure additional parameters
             {"code_name": "parameters", "widget": tk.Button, "data_type": float, "text": "Parameters",
-             "bg": BG_COLOR_2, "command": self._show_popup},
+             "bg": BG_COLOR_2, "command": self._show_popup, "header": "", "width": 70},
             # Activate strategy
             {"code_name": "activation", "widget": tk.Button, "data_type": float, "text": "OFF",
-             "bg": "darkred", "command": self._switch_strategy},
+             "bg": "darkred", "command": self._switch_strategy, "header": "", "width": 30},
             # Delete current row
             {"code_name": "delete", "widget": tk.Button, "data_type": float, "text": "X",
-             "bg": "darkred", "command": self._delete_row},
+             "bg": "darkred", "command": self._delete_row, "header": "", "width": 30},
 
         ]
 
@@ -88,9 +92,19 @@ class StrategyEditor (tk.Frame):
         }
 
         # Loop through headers to create widgets dynamically
-        for idx, h in enumerate(self._headers):
-            header = tk.Label(self._table_frame, text=h, bg=BG_COLOR, fg=FG_COLOR, font=BOLD_FONT)
-            header.grid(row=0, column=idx)
+        for idx, h in enumerate(self._base_params):
+            header = tk.Label(self._headers_frame, text=h['header'], bg=BG_COLOR, fg=FG_COLOR, font=GLOBAL_FONT,
+                              width=h['width'], bd=1, relief=tk.FLAT)
+            header.grid(row=0, column=idx, padx=2)
+
+        header = tk.Label(self._headers_frame, text="", bg=BG_COLOR, fg=FG_COLOR, font=GLOBAL_FONT,
+                          width=8, bd=1, relief=tk.FLAT)
+        header.grid(row=0, column=len(self._base_params), padx=2)
+
+        self._headers_frame.pack(side=tk.TOP, anchor="nw")
+
+        self._body_frame = ScrollableFrame(self._table_frame, bg=BG_COLOR, height=250)
+        self._body_frame.pack(side=tk.TOP, fill=tk.X, anchor="nw")
 
         # Creates keys of the dictionary in the loop so that self.headers can be reused
         for h in self._base_params:
@@ -109,14 +123,16 @@ class StrategyEditor (tk.Frame):
             if base_param['widget'] == tk.OptionMenu:
                 self.body_widgets[code_name + "_var"][b_index] = tk.StringVar()
                 self.body_widgets[code_name + "_var"][b_index].set(base_param['values'][0])
-                self.body_widgets[code_name][b_index] = tk.OptionMenu(self._table_frame,
+                self.body_widgets[code_name][b_index] = tk.OptionMenu(self._body_frame.sub_frame,
                                                                       self.body_widgets[code_name + "_var"][b_index],
                                                                       *base_param['values']) # * will unpack the list
-                self.body_widgets[code_name][b_index].config(width=base_param['width'], highlightthickness=False, bd=0)
+                self.body_widgets[code_name][b_index].config(width=base_param['width'],
+                                                             bd=-1, indicatoron=0, highlightthickness=False, font=GLOBAL_FONT)
 
             elif base_param['widget'] == tk.Entry:
-                self.body_widgets[code_name][b_index] = tk.Entry(self._table_frame, justify=tk.CENTER,
-                                                                 highlightthickness=False, width=base_param['width'])
+                self.body_widgets[code_name][b_index] = tk.Entry(self._body_frame.sub_frame, justify=tk.CENTER,
+                                                                 font=GLOBAL_FONT, bd=0, highlightthickness=False,
+                                                                 width=base_param['width'])
 
                 # Modify the widget depending on if want an integer or floating number as data type
                 if base_param['data_type'] == int:
@@ -125,13 +141,13 @@ class StrategyEditor (tk.Frame):
                     self.body_widgets[code_name][b_index].config(validate='key', validatecommand=(self._valid_float, "%P"))
 
             elif base_param['widget'] == tk.Button:
-                self.body_widgets[code_name][b_index] = tkmac.Button(self._table_frame, text=base_param['text'],
-                                            bg=base_param['bg'], fg=FG_COLOR, borderless=True,
-                                            command=lambda frozen_command=base_param['command']:frozen_command(b_index))
+                self.body_widgets[code_name][b_index] = tkmac.Button(self._body_frame.sub_frame, text=base_param['text'],
+                                            bg=base_param['bg'], fg=FG_COLOR, font=GLOBAL_FONT, width=base_param['width'], borderless=True,
+                                            command=lambda frozen_command=base_param['command']: frozen_command(b_index))
             else:
                 continue
 
-            self.body_widgets[code_name][b_index].grid(row=b_index, column=col)
+            self.body_widgets[code_name][b_index].grid(row=b_index, column=col, padx=2)
 
         self._additional_parameters[b_index] = dict()
 

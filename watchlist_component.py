@@ -127,7 +127,7 @@ class Watchlist (tk.Frame):
         # Adds a button when a symbol is added to the watchlist
         self.body_widgets['remove'][b_index] = tkmac.Button(self._body_frame.sub_frame, text="X", borderless=True,
                                                      bg="darkred", fg=FG_COLOR, font=GLOBAL_FONT,
-                                                     command=lambda: self._remove_symbol(b_index), width=4)
+                                                     command=lambda: self._remove_symbol(b_index), width=30)
         self.body_widgets['remove'][b_index].grid(row=b_index, column=4)
 
 
