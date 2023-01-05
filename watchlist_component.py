@@ -7,6 +7,8 @@ import tkmacosx as tkmac
 from models import *
 from styling import *
 
+from autocomplete_widget import Autocomplete
+
 class Watchlist (tk.Frame):
     def __init__(self, binance_contracts: typing.Dict[str, Contract], bitmex_contracts: typing.Dict[str, Contract], *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,7 +26,7 @@ class Watchlist (tk.Frame):
         self._binance_label.grid(row=0, column=0)
 
         # insertbackground is the colour of the cursor when placed onto the entry widget
-        self._binance_entry = tk.Entry(self._commands_frame, fg=FG_COLOR, justify=tk.CENTER, insertbackground=FG_COLOR,
+        self._binance_entry = Autocomplete(self.binance_symbols, self._commands_frame, fg=FG_COLOR, justify=tk.CENTER, insertbackground=FG_COLOR,
                                        bg=BG_COLOR_2, highlightthickness=False)
         # Associate keyboard action to a callback function
         self._binance_entry.bind("<Return>", self._add_binance_symbol)
@@ -33,7 +35,7 @@ class Watchlist (tk.Frame):
         self._bitmex_label = tk.Label(self._commands_frame, text="Bitmex", bg=BG_COLOR, fg=FG_COLOR, font=BOLD_FONT)
         self._bitmex_label.grid(row=0, column=1)
 
-        self._bitmex_entry = tk.Entry(self._commands_frame, fg=FG_COLOR, justify=tk.CENTER, insertbackground=FG_COLOR,
+        self._bitmex_entry = Autocomplete(self.bitmex_symbols, self._commands_frame, fg=FG_COLOR, justify=tk.CENTER, insertbackground=FG_COLOR,
                                       bg=BG_COLOR_2, highlightthickness=False)
         self._bitmex_entry.bind("<Return>", self._add_bitmex_symbol)
         self._bitmex_entry.grid(row=1, column=1)
