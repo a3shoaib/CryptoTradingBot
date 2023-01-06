@@ -1,4 +1,5 @@
 # Use SQLite to save info in a database and load data when the application is opened, relational database
+# Use DB Browser for SQLite to visualize the database
 import sqlite3
 import typing
 
