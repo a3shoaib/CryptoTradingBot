@@ -23,7 +23,7 @@ logger.addHandler(file_handler)
 
 
 if __name__ == '__main__':
-
+    # Enter public and private keys
     binance = BinanceFuturesClient("public_key",
                                    "private_key", True)
     bitmex = BitmexClient("public_key", "private_key", True)
