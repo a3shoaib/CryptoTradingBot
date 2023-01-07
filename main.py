@@ -1,7 +1,8 @@
-import tkinter as tk
 import logging
 
-from CryptoTradingBot.connectors.binance_futures import BinanceFuturesClient
+from binance_futures import BinanceFuturesClient
+from bitmex import BitmexClient
+from root_component import Root
 
 
 logger = logging.getLogger()
@@ -22,9 +23,10 @@ logger.addHandler(file_handler)
 
 
 if __name__ == '__main__':
+    # Enter: public and private keys
+    binance = BinanceFuturesClient("public_key",
+                                   "private_key", True)
+    bitmex = BitmexClient("public_key", "private_key", True)
 
-    binance = BinanceFuturesClient(True)
-    print(binance.get_historical_candles("BTCUSDT", "1h"))
-
-    root = tk.Tk()
+    root = Root(binance, bitmex)
     root.mainloop()

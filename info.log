@@ -108,3 +108,561 @@
 2022-12-26 16:18:54,059 INFO :: Binance Futures Client successfully initialized
 2022-12-26 16:20:15,818 INFO :: Binance Futures Client successfully initialized
 2022-12-26 16:21:16,554 INFO :: Binance Futures Client successfully initialized
+2022-12-26 23:55:35,653 INFO :: Binance Futures Client successfully initialized
+2022-12-26 23:55:36,609 INFO :: Binance connection opened
+2022-12-27 21:56:34,607 INFO :: Binance Futures Client successfully initialized
+2022-12-27 21:56:35,148 INFO :: Bitmex Client successfully initialized
+2022-12-27 21:56:35,538 INFO :: Binance connection opened
+2022-12-27 21:56:35,743 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:38,497 INFO :: Binance connection opened
+2022-12-27 21:56:38,864 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:41,625 INFO :: Binance connection opened
+2022-12-27 21:56:41,811 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:44,563 INFO :: Binance connection opened
+2022-12-27 21:56:44,750 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:47,493 INFO :: Binance connection opened
+2022-12-27 21:56:47,682 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:50,433 INFO :: Binance connection opened
+2022-12-27 21:56:50,645 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:53,386 INFO :: Binance connection opened
+2022-12-27 21:56:53,571 WARNING :: Binance Websocket connection closed
+2022-12-27 21:56:57,441 INFO :: Binance connection opened
+2022-12-27 21:56:57,626 WARNING :: Binance Websocket connection closed
+2022-12-27 21:57:00,381 INFO :: Binance connection opened
+2022-12-27 21:57:00,574 WARNING :: Binance Websocket connection closed
+2022-12-27 22:00:53,134 INFO :: Binance Futures Client successfully initialized
+2022-12-27 22:00:53,708 INFO :: Bitmex Client successfully initialized
+2022-12-27 22:00:54,066 INFO :: Binance connection opened
+2022-12-27 22:00:54,251 WARNING :: Binance Websocket connection closed
+2022-12-27 22:00:57,019 INFO :: Binance connection opened
+2022-12-27 22:00:57,212 WARNING :: Binance Websocket connection closed
+2022-12-27 22:01:00,061 INFO :: Binance connection opened
+2022-12-27 22:01:00,250 WARNING :: Binance Websocket connection closed
+2022-12-27 22:01:03,008 INFO :: Binance connection opened
+2022-12-27 22:01:03,196 WARNING :: Binance Websocket connection closed
+2022-12-27 22:01:06,720 INFO :: Binance connection opened
+2022-12-27 22:01:06,913 WARNING :: Binance Websocket connection closed
+2022-12-27 22:01:09,680 INFO :: Binance connection opened
+2022-12-27 22:01:09,869 WARNING :: Binance Websocket connection closed
+2022-12-27 22:01:12,637 INFO :: Binance connection opened
+2022-12-27 22:01:12,825 WARNING :: Binance Websocket connection closed
+2022-12-27 22:34:59,043 INFO :: Binance Futures Client successfully initialized
+2022-12-27 22:34:59,739 INFO :: Bitmex Client successfully initialized
+2022-12-27 22:34:59,912 INFO :: Binance connection opened
+2022-12-27 22:35:00,006 ERROR :: Error while making POST request to /api/v1/order: {'error': {'message': 'Order quantity must be a multiple of lot size: 100', 'name': 'HTTPError'}} (error code 400)
+2022-12-27 22:35:00,212 WARNING :: Binance Websocket connection closed
+2022-12-27 22:35:02,967 INFO :: Binance connection opened
+2022-12-27 22:35:03,150 WARNING :: Binance Websocket connection closed
+2022-12-27 22:35:05,896 INFO :: Binance connection opened
+2022-12-27 22:35:06,085 WARNING :: Binance Websocket connection closed
+2022-12-27 22:35:54,864 INFO :: Binance Futures Client successfully initialized
+2022-12-27 22:35:55,347 INFO :: Bitmex Client successfully initialized
+2022-12-27 22:35:55,611 INFO :: Binance connection opened
+2022-12-27 22:35:55,798 WARNING :: Binance Websocket connection closed
+2022-12-27 22:35:58,567 INFO :: Binance connection opened
+2022-12-27 22:35:58,758 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:01,506 INFO :: Binance connection opened
+2022-12-27 22:36:01,693 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:04,471 INFO :: Binance connection opened
+2022-12-27 22:36:04,674 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:07,546 INFO :: Binance connection opened
+2022-12-27 22:36:07,734 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:10,618 INFO :: Binance connection opened
+2022-12-27 22:36:10,806 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:13,587 INFO :: Binance connection opened
+2022-12-27 22:36:13,778 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:16,577 INFO :: Binance connection opened
+2022-12-27 22:36:16,762 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:32,091 INFO :: Binance Futures Client successfully initialized
+2022-12-27 22:36:32,618 INFO :: Bitmex Client successfully initialized
+2022-12-27 22:36:32,849 ERROR :: Error while making POST request to /api/v1/order: {'error': {'message': 'Order quantity must be a multiple of lot size: 100', 'name': 'HTTPError'}} (error code 400)
+2022-12-27 22:36:32,850 INFO :: Binance connection opened
+2022-12-27 22:36:33,223 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:36,025 INFO :: Binance connection opened
+2022-12-27 22:36:36,217 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:39,094 INFO :: Binance connection opened
+2022-12-27 22:36:39,281 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:43,193 INFO :: Binance connection opened
+2022-12-27 22:36:43,379 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:46,123 INFO :: Binance connection opened
+2022-12-27 22:36:46,318 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:49,058 INFO :: Binance connection opened
+2022-12-27 22:36:49,242 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:52,062 INFO :: Binance connection opened
+2022-12-27 22:36:52,256 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:55,015 INFO :: Binance connection opened
+2022-12-27 22:36:55,202 WARNING :: Binance Websocket connection closed
+2022-12-27 22:36:57,944 INFO :: Binance connection opened
+2022-12-27 22:36:58,127 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:00,912 INFO :: Binance connection opened
+2022-12-27 22:37:01,104 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:03,848 INFO :: Binance connection opened
+2022-12-27 22:37:04,034 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:06,930 INFO :: Binance connection opened
+2022-12-27 22:37:07,116 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:09,884 INFO :: Binance connection opened
+2022-12-27 22:37:10,068 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:12,927 INFO :: Binance connection opened
+2022-12-27 22:37:13,140 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:15,879 INFO :: Binance connection opened
+2022-12-27 22:37:16,063 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:18,810 INFO :: Binance connection opened
+2022-12-27 22:37:18,995 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:21,875 INFO :: Binance connection opened
+2022-12-27 22:37:22,064 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:24,951 INFO :: Binance connection opened
+2022-12-27 22:37:25,134 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:27,879 INFO :: Binance connection opened
+2022-12-27 22:37:28,061 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:30,846 INFO :: Binance connection opened
+2022-12-27 22:37:31,053 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:33,790 INFO :: Binance connection opened
+2022-12-27 22:37:33,974 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:36,721 INFO :: Binance connection opened
+2022-12-27 22:37:36,905 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:39,649 INFO :: Binance connection opened
+2022-12-27 22:37:39,834 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:42,570 INFO :: Binance connection opened
+2022-12-27 22:37:42,752 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:45,509 INFO :: Binance connection opened
+2022-12-27 22:37:45,697 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:48,441 INFO :: Binance connection opened
+2022-12-27 22:37:48,625 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:51,436 INFO :: Binance connection opened
+2022-12-27 22:37:51,623 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:54,367 INFO :: Binance connection opened
+2022-12-27 22:37:54,555 WARNING :: Binance Websocket connection closed
+2022-12-27 22:37:57,309 INFO :: Binance connection opened
+2022-12-27 22:37:57,670 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:00,459 INFO :: Binance connection opened
+2022-12-27 22:38:00,648 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:03,977 INFO :: Binance connection opened
+2022-12-27 22:38:04,162 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:06,955 INFO :: Binance connection opened
+2022-12-27 22:38:07,142 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:10,190 INFO :: Binance connection opened
+2022-12-27 22:38:10,397 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:13,500 INFO :: Binance connection opened
+2022-12-27 22:38:13,800 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:16,556 INFO :: Binance connection opened
+2022-12-27 22:38:16,748 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:19,548 INFO :: Binance connection opened
+2022-12-27 22:38:20,351 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:23,108 INFO :: Binance connection opened
+2022-12-27 22:38:23,294 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:26,061 INFO :: Binance connection opened
+2022-12-27 22:38:26,246 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:28,987 INFO :: Binance connection opened
+2022-12-27 22:38:29,172 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:31,921 INFO :: Binance connection opened
+2022-12-27 22:38:32,105 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:34,848 INFO :: Binance connection opened
+2022-12-27 22:38:35,032 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:37,795 INFO :: Binance connection opened
+2022-12-27 22:38:37,981 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:40,757 INFO :: Binance connection opened
+2022-12-27 22:38:40,943 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:43,677 INFO :: Binance connection opened
+2022-12-27 22:38:43,863 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:46,604 INFO :: Binance connection opened
+2022-12-27 22:38:46,788 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:49,542 INFO :: Binance connection opened
+2022-12-27 22:38:49,729 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:52,466 INFO :: Binance connection opened
+2022-12-27 22:38:52,650 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:55,396 INFO :: Binance connection opened
+2022-12-27 22:38:55,626 WARNING :: Binance Websocket connection closed
+2022-12-27 22:38:58,375 INFO :: Binance connection opened
+2022-12-27 22:38:58,559 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:01,313 INFO :: Binance connection opened
+2022-12-27 22:39:01,496 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:04,239 INFO :: Binance connection opened
+2022-12-27 22:39:04,422 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:07,177 INFO :: Binance connection opened
+2022-12-27 22:39:07,362 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:10,109 INFO :: Binance connection opened
+2022-12-27 22:39:10,292 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:13,067 INFO :: Binance connection opened
+2022-12-27 22:39:13,253 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:15,997 INFO :: Binance connection opened
+2022-12-27 22:39:16,181 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:18,918 INFO :: Binance connection opened
+2022-12-27 22:39:19,102 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:21,858 INFO :: Binance connection opened
+2022-12-27 22:39:22,043 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:24,802 INFO :: Binance connection opened
+2022-12-27 22:39:24,987 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:27,729 INFO :: Binance connection opened
+2022-12-27 22:39:27,914 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:30,667 INFO :: Binance connection opened
+2022-12-27 22:39:30,853 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:33,617 INFO :: Binance connection opened
+2022-12-27 22:39:33,803 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:36,548 INFO :: Binance connection opened
+2022-12-27 22:39:36,733 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:39,491 INFO :: Binance connection opened
+2022-12-27 22:39:39,675 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:42,421 INFO :: Binance connection opened
+2022-12-27 22:39:42,604 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:45,420 INFO :: Binance connection opened
+2022-12-27 22:39:45,602 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:48,328 INFO :: Binance connection opened
+2022-12-27 22:39:48,512 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:51,247 INFO :: Binance connection opened
+2022-12-27 22:39:51,430 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:54,171 INFO :: Binance connection opened
+2022-12-27 22:39:54,354 WARNING :: Binance Websocket connection closed
+2022-12-27 22:39:57,103 INFO :: Binance connection opened
+2022-12-27 22:39:57,291 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:00,068 INFO :: Binance connection opened
+2022-12-27 22:40:00,272 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:03,030 INFO :: Binance connection opened
+2022-12-27 22:40:03,216 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:06,984 INFO :: Binance connection opened
+2022-12-27 22:40:07,173 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:09,928 INFO :: Binance connection opened
+2022-12-27 22:40:10,114 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:12,863 INFO :: Binance connection opened
+2022-12-27 22:40:13,049 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:15,836 INFO :: Binance connection opened
+2022-12-27 22:40:16,041 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:18,786 INFO :: Binance connection opened
+2022-12-27 22:40:18,970 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:21,726 INFO :: Binance connection opened
+2022-12-27 22:40:21,911 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:24,671 INFO :: Binance connection opened
+2022-12-27 22:40:24,858 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:27,606 INFO :: Binance connection opened
+2022-12-27 22:40:27,788 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:30,550 INFO :: Binance connection opened
+2022-12-27 22:40:30,758 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:33,486 INFO :: Binance connection opened
+2022-12-27 22:40:33,666 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:36,441 INFO :: Binance connection opened
+2022-12-27 22:40:36,624 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:39,397 INFO :: Binance connection opened
+2022-12-27 22:40:39,579 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:42,316 INFO :: Binance connection opened
+2022-12-27 22:40:43,037 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:46,537 INFO :: Binance connection opened
+2022-12-27 22:40:46,721 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:49,492 INFO :: Binance connection opened
+2022-12-27 22:40:49,681 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:52,418 INFO :: Binance connection opened
+2022-12-27 22:40:52,601 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:55,339 INFO :: Binance connection opened
+2022-12-27 22:40:55,545 WARNING :: Binance Websocket connection closed
+2022-12-27 22:40:58,282 INFO :: Binance connection opened
+2022-12-27 22:40:58,466 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:01,221 INFO :: Binance connection opened
+2022-12-27 22:41:01,406 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:04,155 INFO :: Binance connection opened
+2022-12-27 22:41:04,341 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:07,087 INFO :: Binance connection opened
+2022-12-27 22:41:07,270 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:10,020 INFO :: Binance connection opened
+2022-12-27 22:41:10,202 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:12,942 INFO :: Binance connection opened
+2022-12-27 22:41:13,124 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:15,871 INFO :: Binance connection opened
+2022-12-27 22:41:16,051 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:18,790 INFO :: Binance connection opened
+2022-12-27 22:41:18,974 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:21,720 INFO :: Binance connection opened
+2022-12-27 22:41:21,903 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:24,654 INFO :: Binance connection opened
+2022-12-27 22:41:24,837 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:27,583 INFO :: Binance connection opened
+2022-12-27 22:41:27,768 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:30,514 INFO :: Binance connection opened
+2022-12-27 22:41:30,702 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:33,436 INFO :: Binance connection opened
+2022-12-27 22:41:33,621 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:36,371 INFO :: Binance connection opened
+2022-12-27 22:41:36,554 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:39,305 INFO :: Binance connection opened
+2022-12-27 22:41:39,488 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:42,250 INFO :: Binance connection opened
+2022-12-27 22:41:42,433 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:45,202 INFO :: Binance connection opened
+2022-12-27 22:41:45,394 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:48,131 INFO :: Binance connection opened
+2022-12-27 22:41:48,315 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:51,069 INFO :: Binance connection opened
+2022-12-27 22:41:51,255 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:54,025 INFO :: Binance connection opened
+2022-12-27 22:41:54,213 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:56,962 INFO :: Binance connection opened
+2022-12-27 22:41:57,144 WARNING :: Binance Websocket connection closed
+2022-12-27 22:41:59,880 INFO :: Binance connection opened
+2022-12-27 22:42:00,065 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:02,804 INFO :: Binance connection opened
+2022-12-27 22:42:02,989 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:05,725 INFO :: Binance connection opened
+2022-12-27 22:42:05,907 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:08,654 INFO :: Binance connection opened
+2022-12-27 22:42:08,841 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:11,617 INFO :: Binance connection opened
+2022-12-27 22:42:11,806 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:14,540 INFO :: Binance connection opened
+2022-12-27 22:42:14,722 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:17,480 INFO :: Binance connection opened
+2022-12-27 22:42:17,665 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:20,419 INFO :: Binance connection opened
+2022-12-27 22:42:20,604 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:23,375 INFO :: Binance connection opened
+2022-12-27 22:42:23,560 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:26,308 INFO :: Binance connection opened
+2022-12-27 22:42:26,492 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:29,226 INFO :: Binance connection opened
+2022-12-27 22:42:29,409 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:32,163 INFO :: Binance connection opened
+2022-12-27 22:42:32,352 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:35,098 INFO :: Binance connection opened
+2022-12-27 22:42:35,282 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:38,023 INFO :: Binance connection opened
+2022-12-27 22:42:38,205 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:40,935 INFO :: Binance connection opened
+2022-12-27 22:42:41,117 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:43,870 INFO :: Binance connection opened
+2022-12-27 22:42:44,055 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:46,790 INFO :: Binance connection opened
+2022-12-27 22:42:46,971 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:49,705 INFO :: Binance connection opened
+2022-12-27 22:42:49,890 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:52,628 INFO :: Binance connection opened
+2022-12-27 22:42:52,811 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:55,548 INFO :: Binance connection opened
+2022-12-27 22:42:55,730 WARNING :: Binance Websocket connection closed
+2022-12-27 22:42:58,482 INFO :: Binance connection opened
+2022-12-27 22:42:58,670 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:01,420 INFO :: Binance connection opened
+2022-12-27 22:43:01,605 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:04,331 INFO :: Binance connection opened
+2022-12-27 22:43:04,513 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:07,277 INFO :: Binance connection opened
+2022-12-27 22:43:07,479 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:10,212 INFO :: Binance connection opened
+2022-12-27 22:43:10,395 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:13,129 INFO :: Binance connection opened
+2022-12-27 22:43:13,314 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:16,053 INFO :: Binance connection opened
+2022-12-27 22:43:16,238 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:18,975 INFO :: Binance connection opened
+2022-12-27 22:43:19,158 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:21,901 INFO :: Binance connection opened
+2022-12-27 22:43:22,084 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:24,830 INFO :: Binance connection opened
+2022-12-27 22:43:25,014 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:27,764 INFO :: Binance connection opened
+2022-12-27 22:43:27,947 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:30,676 INFO :: Binance connection opened
+2022-12-27 22:43:30,860 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:33,627 INFO :: Binance connection opened
+2022-12-27 22:43:33,811 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:36,557 INFO :: Binance connection opened
+2022-12-27 22:43:36,745 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:39,483 INFO :: Binance connection opened
+2022-12-27 22:43:39,665 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:42,427 INFO :: Binance connection opened
+2022-12-27 22:43:42,613 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:45,355 INFO :: Binance connection opened
+2022-12-27 22:43:45,538 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:48,282 INFO :: Binance connection opened
+2022-12-27 22:43:48,467 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:51,212 INFO :: Binance connection opened
+2022-12-27 22:43:51,393 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:54,133 INFO :: Binance connection opened
+2022-12-27 22:43:54,316 WARNING :: Binance Websocket connection closed
+2022-12-27 22:43:57,066 INFO :: Binance connection opened
+2022-12-27 22:43:57,252 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:00,003 INFO :: Binance connection opened
+2022-12-27 22:44:00,188 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:02,918 INFO :: Binance connection opened
+2022-12-27 22:44:03,101 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:05,909 INFO :: Binance connection opened
+2022-12-27 22:44:06,101 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:08,863 INFO :: Binance connection opened
+2022-12-27 22:44:09,049 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:11,796 INFO :: Binance connection opened
+2022-12-27 22:44:11,978 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:14,730 INFO :: Binance connection opened
+2022-12-27 22:44:14,918 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:17,667 INFO :: Binance connection opened
+2022-12-27 22:44:17,851 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:20,582 INFO :: Binance connection opened
+2022-12-27 22:44:20,765 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:23,497 INFO :: Binance connection opened
+2022-12-27 22:44:23,679 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:26,423 INFO :: Binance connection opened
+2022-12-27 22:44:26,608 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:29,382 INFO :: Binance connection opened
+2022-12-27 22:44:29,573 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:32,342 INFO :: Binance connection opened
+2022-12-27 22:44:32,532 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:35,297 INFO :: Binance connection opened
+2022-12-27 22:44:35,483 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:38,237 INFO :: Binance connection opened
+2022-12-27 22:44:38,420 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:41,175 INFO :: Binance connection opened
+2022-12-27 22:44:41,356 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:44,091 INFO :: Binance connection opened
+2022-12-27 22:44:44,276 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:47,027 INFO :: Binance connection opened
+2022-12-27 22:44:47,211 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:49,946 INFO :: Binance connection opened
+2022-12-27 22:44:50,130 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:53,360 INFO :: Binance connection opened
+2022-12-27 22:44:53,551 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:56,300 INFO :: Binance connection opened
+2022-12-27 22:44:56,486 WARNING :: Binance Websocket connection closed
+2022-12-27 22:44:59,248 INFO :: Binance connection opened
+2022-12-27 22:44:59,437 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:02,186 INFO :: Binance connection opened
+2022-12-27 22:45:02,370 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:05,119 INFO :: Binance connection opened
+2022-12-27 22:45:05,302 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:08,058 INFO :: Binance connection opened
+2022-12-27 22:45:08,243 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:10,983 INFO :: Binance connection opened
+2022-12-27 22:45:11,165 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:13,905 INFO :: Binance connection opened
+2022-12-27 22:45:14,089 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:16,839 INFO :: Binance connection opened
+2022-12-27 22:45:17,025 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:19,764 INFO :: Binance connection opened
+2022-12-27 22:45:19,948 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:22,697 INFO :: Binance connection opened
+2022-12-27 22:45:22,881 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:25,622 INFO :: Binance connection opened
+2022-12-27 22:45:25,804 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:28,553 INFO :: Binance connection opened
+2022-12-27 22:45:28,736 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:31,494 INFO :: Binance connection opened
+2022-12-27 22:45:31,679 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:34,431 INFO :: Binance connection opened
+2022-12-27 22:45:34,616 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:37,368 INFO :: Binance connection opened
+2022-12-27 22:45:37,552 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:40,304 INFO :: Binance connection opened
+2022-12-27 22:45:40,486 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:43,230 INFO :: Binance connection opened
+2022-12-27 22:45:43,416 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:46,169 INFO :: Binance connection opened
+2022-12-27 22:45:46,355 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:49,172 INFO :: Binance connection opened
+2022-12-27 22:45:49,357 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:52,112 INFO :: Binance connection opened
+2022-12-27 22:45:52,299 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:55,044 INFO :: Binance connection opened
+2022-12-27 22:45:55,230 WARNING :: Binance Websocket connection closed
+2022-12-27 22:45:57,967 INFO :: Binance connection opened
+2022-12-27 22:45:58,150 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:00,906 INFO :: Binance connection opened
+2022-12-27 22:46:01,091 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:03,836 INFO :: Binance connection opened
+2022-12-27 22:46:04,020 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:06,774 INFO :: Binance connection opened
+2022-12-27 22:46:06,959 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:09,707 INFO :: Binance connection opened
+2022-12-27 22:46:09,890 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:12,641 INFO :: Binance connection opened
+2022-12-27 22:46:12,827 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:15,576 INFO :: Binance connection opened
+2022-12-27 22:46:15,761 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:18,506 INFO :: Binance connection opened
+2022-12-27 22:46:18,689 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:21,438 INFO :: Binance connection opened
+2022-12-27 22:46:21,624 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:24,370 INFO :: Binance connection opened
+2022-12-27 22:46:24,552 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:27,304 INFO :: Binance connection opened
+2022-12-27 22:46:27,487 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:30,231 INFO :: Binance connection opened
+2022-12-27 22:46:30,416 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:33,168 INFO :: Binance connection opened
+2022-12-27 22:46:33,353 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:36,103 INFO :: Binance connection opened
+2022-12-27 22:46:36,289 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:39,028 INFO :: Binance connection opened
+2022-12-27 22:46:39,215 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:41,953 INFO :: Binance connection opened
+2022-12-27 22:46:42,138 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:44,897 INFO :: Binance connection opened
+2022-12-27 22:46:45,085 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:47,827 INFO :: Binance connection opened
+2022-12-27 22:46:48,010 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:50,760 INFO :: Binance connection opened
+2022-12-27 22:46:50,944 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:53,682 INFO :: Binance connection opened
+2022-12-27 22:46:53,865 WARNING :: Binance Websocket connection closed
+2022-12-27 22:46:56,622 INFO :: Binance connection opened
+2022-12-27 22:46:56,809 WARNING :: Binance Websocket connection closed
+2022-12-27 22:56:43,373 INFO :: Binance Futures Client successfully initialized
+2022-12-27 22:56:43,900 INFO :: Bitmex Client successfully initialized
+2022-12-27 22:56:44,123 ERROR :: Error while making POST request to /api/v1/order: {'error': {'message': 'Order quantity must be a multiple of lot size: 100', 'name': 'HTTPError'}} (error code 400)
+2022-12-27 22:56:44,313 INFO :: Binance connection opened
+2022-12-27 22:56:44,393 INFO :: Bitmex connection opened
+2022-12-27 22:56:44,496 WARNING :: Binance Websocket connection closed
+2022-12-27 22:56:47,257 INFO :: Binance connection opened
+2022-12-27 22:56:47,445 WARNING :: Binance Websocket connection closed
+2022-12-27 22:56:50,193 INFO :: Binance connection opened
+2022-12-27 22:56:50,376 WARNING :: Binance Websocket connection closed
+2022-12-27 22:56:53,126 INFO :: Binance connection opened
+2022-12-27 22:56:53,312 WARNING :: Binance Websocket connection closed
+2022-12-27 22:58:17,706 INFO :: Binance Futures Client successfully initialized
+2022-12-27 22:58:18,215 INFO :: Bitmex Client successfully initialized
+2022-12-27 22:58:18,583 INFO :: Binance connection opened
+2022-12-27 22:58:18,776 WARNING :: Binance Websocket connection closed
+2022-12-27 22:58:18,894 INFO :: Bitmex connection opened
+2022-12-27 22:58:21,557 INFO :: Binance connection opened
+2022-12-27 22:58:21,748 WARNING :: Binance Websocket connection closed
+2022-12-27 22:58:24,515 INFO :: Binance connection opened
+2022-12-27 22:58:24,700 WARNING :: Binance Websocket connection closed
+2022-12-27 22:58:27,460 INFO :: Binance connection opened
+2022-12-27 22:58:27,648 WARNING :: Binance Websocket connection closed
+2022-12-27 22:58:30,438 INFO :: Binance connection opened
+2022-12-27 22:58:30,623 WARNING :: Binance Websocket connection closed
+2022-12-27 22:58:33,398 INFO :: Binance connection opened
+2022-12-27 22:58:33,588 WARNING :: Binance Websocket connection closed
+2022-12-28 19:24:19,147 INFO :: Binance Futures Client successfully initialized
+2022-12-28 19:24:19,641 INFO :: Bitmex Client successfully initialized
+2022-12-28 19:24:19,916 INFO :: Binance connection opened
+2022-12-28 19:24:20,101 WARNING :: Binance Websocket connection closed
+2022-12-28 19:24:20,150 INFO :: Bitmex connection opened
+2022-12-28 19:24:22,857 INFO :: Binance connection opened
+2022-12-28 19:24:23,041 WARNING :: Binance Websocket connection closed
+2022-12-28 19:24:25,789 INFO :: Binance connection opened
+2022-12-28 19:24:25,974 WARNING :: Binance Websocket connection closed
+2022-12-28 19:24:28,732 INFO :: Binance connection opened
+2022-12-28 19:24:28,916 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:19,981 INFO :: Binance Futures Client successfully initialized
+2022-12-28 23:16:20,561 INFO :: Bitmex Client successfully initialized
+2022-12-28 23:16:20,910 INFO :: Binance connection opened
+2022-12-28 23:16:21,094 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:21,213 INFO :: Bitmex connection opened
+2022-12-28 23:16:24,060 INFO :: XBTUSD 16538.5 / 16602.5
+2022-12-28 23:16:24,597 INFO :: Binance connection opened
+2022-12-28 23:16:24,781 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:26,523 INFO :: XBTUSD 16538.5 / 16602.5
+2022-12-28 23:16:27,554 INFO :: Binance connection opened
+2022-12-28 23:16:27,742 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:30,263 INFO :: XBTUSD 16538.5 / 16602.5
+2022-12-28 23:16:30,896 INFO :: XBTUSD 16538.5 / 16602.5
+2022-12-28 23:16:31,635 INFO :: Binance connection opened
+2022-12-28 23:16:31,823 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:34,571 INFO :: Binance connection opened
+2022-12-28 23:16:34,758 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:35,408 INFO :: XBTUSD 16538.5 / 16602.5
+2022-12-28 23:16:37,512 INFO :: Binance connection opened
+2022-12-28 23:16:37,700 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:40,447 INFO :: Binance connection opened
+2022-12-28 23:16:40,633 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:41,482 INFO :: XBTUSD 16538.5 / 16602.5
+2022-12-28 23:16:43,392 INFO :: Binance connection opened
+2022-12-28 23:16:43,581 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:46,331 INFO :: Binance connection opened
+2022-12-28 23:16:46,517 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:49,266 INFO :: Binance connection opened
+2022-12-28 23:16:49,453 WARNING :: Binance Websocket connection closed
+2022-12-28 23:16:50,396 INFO :: XBTUSD 16538.5 / 16602.5
