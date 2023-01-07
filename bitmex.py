@@ -53,6 +53,7 @@ class BitmexClient:
 
         logger.info("Bitmex Client successfully initialized")
 
+    # Most of the functions in bitmex.py are also in binance_futures.py, which is documented for each function
     def _add_log(self, msg: str):
         logger.info("%s", msg)
         self.logs.append({"log": msg, "displayed": False})
@@ -63,13 +64,13 @@ class BitmexClient:
         return hmac.new(self._secret_key.encode(), message.encode(), hashlib.sha256).hexdigest()
 
     def _make_request(self, method: str, endpoint: str, data: typing.Dict):
-
         expires = str(int(time.time()) + 5)
         headers = {
         'api-expires': expires,
         'api-key': self._public_key,
         'api-signature': self._generate_signature(method, endpoint, expires, data)
         }
+
 
         if method == "GET":
             try:

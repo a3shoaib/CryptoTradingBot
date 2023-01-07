@@ -49,7 +49,7 @@ class TradesWatch(tk.Frame):
         # to the headers
         self._body_index = 0
 
-    # Used by _update_ui method in root_component class
+    # Used by _update_ui method in root_component class, adds a new trade row
     def add_trade(self, trade: Trade):
 
         b_index = self._body_index

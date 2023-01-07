@@ -48,7 +48,7 @@ class Strategy:
         logger.info("%s", msg)
         self.logs.append({"log": msg, "displayed": False})
 
-    # Method that parses info of the trade and decide to update the current candle
+    # Method that parses info of the trade coming from the websocket and update the current candle based on the timestamp
     def parse_trades(self, price: float, size: float, timestamp: int) -> str:
 
         # Calculate differecne of current unix timestamp and timestamp of trade
@@ -122,6 +122,7 @@ class Strategy:
 
             return "new_candle"
 
+    # Called frequently after an order has been placed until it is filled
     def _check_order_status(self, order_id):
         order_status = self.client.get_order_status(self.contract, order_id)
 
@@ -138,6 +139,7 @@ class Strategy:
         t = Timer(2.0, lambda: self._check_order_status(order_id))
         t.start()
 
+    # Open a Long or Short position based on the signal's result
     def _open_position(self, signal_result: int):
 
         trade_size = self.client.get_trade_size(self.contract, self.candles[-1].close, self.balance_pct)
@@ -173,7 +175,7 @@ class Strategy:
 
             self.trades.append(new_trade)
 
-    # Checks if take profit or stop loss has been reached
+    # Check if take profit or stop loss has been reached based on the average price entry
     def _check_tp_sl(self, trade: Trade):
         tp_triggered = False
         sl_triggered = False
@@ -221,7 +223,7 @@ class TechnicalStrategy(Strategy):
 
         # Get historical data after creating strategy object
 
-    # Relative strength index
+    # Calculate relative strength index
     def _rsi(self):
         close_list = []
         for candle in self.candles:
@@ -252,6 +254,8 @@ class TechnicalStrategy(Strategy):
 
         # Return candle before current one like macd
         return rsi.iloc[-2]
+
+    # Calculate the MACD and the corresponding signal line
     def _macd(self) -> Tuple[float, float]:
         # 4 steps to calculate macd (moving average convergance divergance):
         # 1. Fast EMA calculation, 2. Slow EMA calculation, 3. Fast EMA - Slow EMA (subtract), 4. EMA on the result of 3.
@@ -277,6 +281,8 @@ class TechnicalStrategy(Strategy):
         return macd_line.iloc[-2], macd_signal.iloc[-2]
 
 
+    # Calculate technical indicators and compare their values to predefined levels and decide whether to go long, short
+    # or do nothing
     def _check_signal(self):
         macd_line, macd_signal = self._macd()
         rsi = self._rsi()
@@ -290,8 +296,10 @@ class TechnicalStrategy(Strategy):
             return -1
         else:
             return 0
+
     # Call the method when there is a long or short signal and no ongoing trade
-    # It will be closed when a stop loss or take profit has been reached but it may take some time to do so
+    # Close when a stop loss or take profit has been reached but may take some time to do so
+    # Called once per candlestick to avoid always calculating indicators
     def check_trade(self, tick_type: str):
         if tick_type == "new candle" and not self.ongoing_position:
             signal_result = self._check_signal()
@@ -311,7 +319,7 @@ class BreakoutStrategy(Strategy):
 
     # Volume of a candle is the sum of the trade sizes that occurred during that candle.
 
-    # Have candlestick data, method checks signal (indicate whether or not to enter a long or short trade or do nothing)
+    # Given candlestick data, check signal (indicate whether or not to enter a long or short trade or do nothing)
     # For long signal return 1, for short signal -1, and for no signal return 0
     def _check_signal(self) -> int:
         # Only need candles and do not need to compute an indicator
@@ -330,10 +338,10 @@ class BreakoutStrategy(Strategy):
         #     elif self.candles[-1].close < self.candles[-3].low:
         #         # Downside breakout
 
+    # Called from websocket _on_message() methods
     def check_trade(self, tick_type: str):
         if not self.ongoing_position:
             signal_result = self._check_signal()
 
             if signal_result in [1, -1]:
                 self._open_position(signal_result)
-

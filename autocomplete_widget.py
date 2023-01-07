@@ -22,6 +22,7 @@ class Autocomplete(tk.Entry):
         self.configure(textvariable=self._var)
         self._var.trace("w", self._changed)
 
+    # Open a Listbox when content in tk.Entry changes and obtain a list of symbols matching this content
     def _changed(self, var_name: str, index: str, mode:str):
 
         self._var.set(self._var.get().upper())
@@ -56,6 +57,8 @@ class Autocomplete(tk.Entry):
                     self._lb.destroy()
                     self._lb_open = False
 
+
+    # Callee with Right arrow key is pressed to change the Listbox to the value in the drop down menu
     def _select(self, event: tk.Event):
         if self._lb_open:
             self._var.set(self._lb.get(tk.ACTIVE))
@@ -63,7 +66,7 @@ class Autocomplete(tk.Entry):
             self._lb_open = False
             self.icursor(tk.END)
 
-    # Using keys to navigate
+    # Using keys to navigate through the scrollbar
     def _up_down(self, event: tk.Event):
 
         if self._lb_open:

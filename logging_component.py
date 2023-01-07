@@ -16,6 +16,7 @@ class Logging(tk.Frame):
                                     font=GLOBAL_FONT, highlightthickness=False, bd=0)
         self.logging_text.pack(side=tk.TOP)
 
+    # Add a log message at the top of the tk.Text widget in local time based on user's region
     def add_log(self, message: str):
         self.logging_text.configure(state=tk.NORMAL)
 

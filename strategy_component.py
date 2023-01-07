@@ -124,6 +124,8 @@ class StrategyEditor (tk.Frame):
 
         self._load_workspace()
 
+    # Add new row of widgets that are defined in self._base_params lsit and align with the headers
+    # Mac and Windows has an effect on the layout and how it may appear when the user is running the application
     def _add_strategy_row(self):
         b_index = self._body_index
 
@@ -168,6 +170,7 @@ class StrategyEditor (tk.Frame):
 
         self._body_index += 1
 
+    # Delete row of the widgets
     def _delete_row(self, b_index: int):
         for element in self._base_params:
             # Access each of the 9 columns and access row that is clicked with b_index to remove it from the interface
@@ -176,6 +179,8 @@ class StrategyEditor (tk.Frame):
             # Delete element from body_widgets dictionary
             del self.body_widgets[element['code_name']][b_index]
 
+
+    # Show popup with additional parameters, specific to the strategy selected
     def _show_popup(self, b_index: int):
 
         # Coordinates of button that was clicked
@@ -227,6 +232,7 @@ class StrategyEditor (tk.Frame):
                                       command=lambda: self._validate_parameters(b_index), borderless=True)
         validation_button.grid(row=row_nb, column=0, columnspan=2)
 
+    # Keep track of the parameters set in the popup window and close the window
     def _validate_parameters(self, b_index: int):
         strat_selected = self.body_widgets['strategy_type_var'][b_index].get()
 
@@ -241,7 +247,7 @@ class StrategyEditor (tk.Frame):
 
         self._popup_window.destroy()
 
-
+    # Called when the ON/OFF button is clicked. Collects historical data, thus causing a small delay
     def _switch_strategy(self, b_index: int):
         # Activate/deactivate strategy
         # When activated, check that no parameters are forgotten
@@ -313,7 +319,7 @@ class StrategyEditor (tk.Frame):
             self.body_widgets['activation'][b_index].config(bg="darkred", text="OFF")
             self.root.logging_frame.add_log(f"{strat_selected} strategy on {symbol} / {timeframe} stopped")
 
-    # Load data from database
+    # Load data from the database and add them to the rows
     def _load_workspace(self):
         data = self.db.get("strategies")
 
@@ -335,5 +341,3 @@ class StrategyEditor (tk.Frame):
             for param, value in extra_params.items():
                 if value is not None:
                     self.additional_parameters[b_index][param] = value
-
-

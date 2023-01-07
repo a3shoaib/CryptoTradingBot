@@ -1,4 +1,4 @@
-# Function that checks integers
+# Checks if text is a positive integer
 def check_integer_format(text: str):
     if text == "":
         # Want the user to be able to delete what they typed
@@ -13,7 +13,7 @@ def check_integer_format(text: str):
     else:
         return False
 
-# Function that checks floats
+# Checks if text is a positive float number
 def check_float_format(text: str):
     if text == "":
         # Want the user to be able to delete what they typed

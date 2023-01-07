@@ -22,7 +22,7 @@ class WorkspaceData:
         self.conn.commit()
 
 
-    # Save data to database
+    # Delete the previous table content and record new data in it
     def save(self, table: str, data: typing.List[typing.Tuple]):
         # Each tuple is a row to insert in the database table
         # Each element in the tuple is a value for a column in the row
@@ -46,7 +46,7 @@ class WorkspaceData:
         self.cursor.executemany(sql_statement, data)
         self.conn.commit()
 
-    # Get data from table
+    # Get data from table - get all the rows recorded for the table
     def get(self, table: str) -> typing.List[sqlite3.Row]:
         # Execute SQL statement to get all the rows of the table
         self.cursor.execute(f"SELECT * FROM {table}")

@@ -32,6 +32,8 @@ class Root(tk.Tk):
 
         self.configure(bg=BG_COLOR)
 
+        # Create the menu, sub menu, menu commands
+        # Used to prevent overloading the UI with buttons
         self.main_menu = tk.Menu(self)
         self.configure(menu=self.main_menu)
 
@@ -64,6 +66,8 @@ class Root(tk.Tk):
         # Call update method once after root component is initiated
         self._update_ui()
 
+    # Called when the user clicks closes/tries to exit the program
+    # Gives control of what is to happen before closing the UI
     def _ask_before_close(self):
         result = askquestion("Confirmation", "Do you want to exit the application?")
         if result == "yes":
@@ -75,7 +79,8 @@ class Root(tk.Tk):
             self.destroy()
 
 
-    # Checks periodically for new logs to add
+    # Checks periodically for new logs to add and updates elements of the UI
+    # Called every 1500 seconds, similar to infinite loop in another class, but it runs in the same thread as .mainloop()
     def _update_ui(self):
 
         # Logs
@@ -169,8 +174,9 @@ class Root(tk.Tk):
         # Only name the function, don't call it so no need for () in the end
         self.after(1500, self._update_ui)
 
+    # Collect the current data and save it to the SQLite database so that the data can be loaded again when the user
+    # starts the program
     def _save_workspace(self):
-
         # Watchlist
         # Create list of tuples to pass to the WorkspaceData save method
         watchlist_symbols = []
@@ -213,9 +219,4 @@ class Root(tk.Tk):
         self._strategy_frame.db.save("strategies", strategies)
 
         self.logging_frame.add_log("Workspace saved")
-
-
-
-
-
 

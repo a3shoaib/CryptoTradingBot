@@ -25,16 +25,18 @@ class ScrollableFrame(tk.Frame):
         self.canvas.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.vsb.pack(side=tk.RIGHT, fill=tk.Y)
 
+    # Create canvas content
     def _on_frame_configure(self, event: tk.Event):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
+    # Activate the mousewheel when mouse enters the canvas sub frame
     def _activate_mousewheel(self, event: tk.Event):
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 
+    # Dectivate the mousewheel when mouse leaves the canvas sub frame
     def _deactivate_mousewheel(self, event: tk.Event):
         self.canvas.unbind_all("<MouseWheel>")
 
+    # Scroll the content in the canvas when the MouseWheel is called.
     def _on_mousewheel(self, event: tk.Event):
         self.canvas.yview_scroll(int(-1 * event.delta), "units")
-
-

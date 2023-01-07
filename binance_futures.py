@@ -54,13 +54,16 @@ class BinanceFuturesClient:
 
         logger.info("Binance Futures Client successfully initialized")
 
+    # Add a log to the list in order for it to be picked by the update_ui() method of the root component
     def _add_log(self, msg: str):
         logger.info("%s", msg)
         self.logs.append({"log": msg, "displayed": False})
 
+    # Generate a signature with the HMAC-256 algorithm
     def _generate_signature(self, data: typing.Dict) -> str:
         return hmac.new(self._secret_key.encode(), urlencode(data).encode(), hashlib.sha256).hexdigest()
 
+    # Handle requests to the REST API and errors
     def _make_request(self, method: str, endpoint: str, data: typing.Dict):
         if method == "GET":
             try:
@@ -92,6 +95,7 @@ class BinanceFuturesClient:
                          method, endpoint, response.json(), response.status_code)
             return None
 
+    #  Get list of symbols (contracts) on the exchange in order to display it on the OptionMenus in the UI
     def get_contracts(self) -> typing.Dict[str, Contract]:
         exchange_info = self._make_request("GET", "/fapi/v1/exchangeInfo", dict())
 
@@ -104,6 +108,7 @@ class BinanceFuturesClient:
 
         return contracts
 
+    # Get list of the most recent candlesticks for any given symbol (contract) and interval
     def get_historical_candles(self, contract: Contract, interval: str) -> typing.List[Candle]:
         data = {
         'symbol': contract.symbol,
@@ -121,6 +126,7 @@ class BinanceFuturesClient:
 
         return candles
 
+    # Get current bid and ask price for any symbol/contract, to display in the Watchlist.
     def get_bid_ask(self, contract: Contract) -> typing.Dict[str, float]:
         data = {
         'symbol': contract.symbol
@@ -136,6 +142,7 @@ class BinanceFuturesClient:
 
             return self.prices[contract.symbol]
 
+    # Get current balance of account
     def get_balances(self) -> typing.Dict[str, Balance]:
         data = {
         'timestamp': int(time.time() * 1000)
@@ -152,6 +159,7 @@ class BinanceFuturesClient:
 
         return balances
 
+    #  Place an order - depending on the order_type, price and tif arguments are not necessary
     def place_order(self, contract: Contract, order_type: str, quantity: float, side: str, price=None, tif=None) -> OrderStatus:
         data = {
         'symbol': contract.symbol,
@@ -176,6 +184,7 @@ class BinanceFuturesClient:
 
         return order_status
 
+    # Cancel order
     def cancel_order(self, contract: Contract, order_id: int) -> OrderStatus:
 
         data = {
@@ -193,6 +202,7 @@ class BinanceFuturesClient:
 
         return order_status
 
+    # Get status of an order
     def get_order_status(self, contract: Contract, order_id: int) -> OrderStatus:
 
         data = {
@@ -212,7 +222,7 @@ class BinanceFuturesClient:
 
         return order_status
 
-    # Starts a connection and assigns which function is called when an event occurs
+    # Infinite loop (run in a Thread) which reopens the websocket connection in case it drops
     def _start_ws(self):
         self.ws = websocket.WebSocketApp(self._wss_url, on_open=self._on_open, on_close=self._on_close,
                                          on_error=self._on_error, on_message=self._on_message)
@@ -233,12 +243,15 @@ class BinanceFuturesClient:
 
         self.subscribe_channel(list(self.contracts.values()), "bookTicker")
 
+    # Called when the connection drops
     def _on_close(self, ws):
         logger.warning("Binance Websocket connection closed")
 
+    # Called in case of an error
     def _on_error(self, ws, msg: str):
         logger.error("Binance connection error: %s", msg)
 
+    # The websocket updates of the channels subscribed go through this callback method
     def _on_message(self, ws, msg: str):
 
         data = json.loads(msg)
@@ -278,7 +291,8 @@ class BinanceFuturesClient:
                         res = strat.parse_trades(float(data['p']), float(data['q']), data['T'])
                         strat.check_trade(res)
 
-    # Class method to suscribe to a channel to recieve market data
+    # Class method to subscribe to a channel to receive market data
+    # If the list is bigger than 300 symbols the subscription will most likely fail
     def subscribe_channel(self, contracts: typing.List[Contract], channel: str):
         data = {
         'method': "SUBSCRIBE",
@@ -296,6 +310,7 @@ class BinanceFuturesClient:
 
         self._ws_id += 1
 
+    # Calculate the trade size based on the percentage of the balance to use (defined in the strategy component)
     def get_trade_size(self, contract: Contract, price: float, balance_pct: float):
 
         balance = self.get_balances()

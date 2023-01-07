@@ -1,4 +1,5 @@
 # Watchlist is a component that streams market data
+# Is also a list of cryptocurrencies/tokens that one is interested in tracking
 
 import tkinter as tk
 import typing
@@ -141,5 +142,3 @@ class Watchlist (tk.Frame):
 
 
         self._body_index += 1
-
-
