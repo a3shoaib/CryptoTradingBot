@@ -1,4 +1,5 @@
 import logging
+import os
 
 from binance_futures import BinanceFuturesClient
 from bitmex import BitmexClient
@@ -24,11 +25,12 @@ logger.addHandler(file_handler)
 
 if __name__ == '__main__':
     # Enter public and private keys
-    binance = BinanceFuturesClient("public_key",
-                                   "private_key", True)
-    bitmex = BitmexClient("public_key", "private_key", True)
+    binance = BinanceFuturesClient(os.environ.get('public_key_binance'),
+                                   os.environ.get('private_key_binance', True))
+    bitmex = BitmexClient(os.environ.get('public_key_bitmex'), os.environ.get('private_key_bitmex', True))
 
     root = Root(binance, bitmex)
     root.mainloop()
+
 
 
