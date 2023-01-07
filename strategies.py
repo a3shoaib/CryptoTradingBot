@@ -147,6 +147,7 @@ class Strategy:
         order_side = "buy" if signal_result == 1 else "sell"
         positon_side = "long" if signal_result == 1 else "short"
 
+
         self._add_log(f"{positon_side.capitalize()} signal on {self.contract.symbol} {self.tf}")
 
         order_status = self.client.place_order(self.contract, "MARKET", trade_size, order_side)

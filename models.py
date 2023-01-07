@@ -106,10 +106,12 @@ class OrderStatus:
             self.order_id = order_info['orderId']
             self.status = order_info['status'].lower()
             self.avg_price = float(order_info['avgPrice'])
+            self.executed_qty = float(order_info['executedQty'])
         elif exchange == "bitmex":
             self.order_id = order_info['orderID']
             self.status = order_info['ordStatus'].lower()
             self.avg_price = order_info['avgPx']
+            self.executed_qty = order_info['cumQty']
 
 # Data model for the trade
 class Trade:

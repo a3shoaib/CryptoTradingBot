@@ -1,3 +1,4 @@
+import collections
 import logging
 import requests
 import time
@@ -109,7 +110,7 @@ class BitmexClient:
             for s in instruments:
                 contracts[s['symbol']] = Contract(s, "bitmex")
 
-        return contracts
+        return collections.OrderedDict(sorted(contracts.items()))
 
     def get_balances(self) -> typing.Dict[str, Balance]:
         data = dict()
@@ -140,6 +141,8 @@ class BitmexClient:
 
         if raw_candles is not None:
             for c in reversed(raw_candles):
+                if c['open'] is None or c['close'] is None:
+                    continue
                 candles.append(Candle(c, timeframe, "bitmex"))
 
         return candles

@@ -42,7 +42,7 @@ class TradesWatch(tk.Frame):
         # Creates keys of the dictionary in the loop so that self.headers can be reused
         for h in self._headers:
             self.body_widgets[h] = dict()
-            if h in ["status", "pnl"]:
+            if h in ["status", "pnl", "quantity"]:
                 self.body_widgets[h + "_var"] = dict()
 
         # Now starts at 0 since there is a dedicated frame for the body and there is no need to reserve the first row
