@@ -40,3 +40,5 @@ class ScrollableFrame(tk.Frame):
     # Scroll the content in the canvas when the MouseWheel is called.
     def _on_mousewheel(self, event: tk.Event):
         self.canvas.yview_scroll(int(-1 * event.delta), "units")
+
+

@@ -25,3 +25,5 @@ class Logging(tk.Frame):
 
         # After adding the message, lock again
         self.logging_text.configure(state=tk.DISABLED)
+
+

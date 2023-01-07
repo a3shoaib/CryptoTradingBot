@@ -6,3 +6,4 @@ FG_COLOR = "white"
 FG_COLOR_2 = "SteelBlue1"
 GLOBAL_FONT = ("Calibri", 10, "normal")
 BOLD_FONT = ("Calibri", 11, "bold")
+

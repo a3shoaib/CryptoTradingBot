@@ -88,3 +88,4 @@ class Autocomplete(tk.Entry):
                 index = str(index + 1)
                 self._lb.selection_set(first=index)
                 self._lb.activate(index)
+

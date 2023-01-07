@@ -28,3 +28,4 @@ def check_float_format(text: str):
 
     else:
         return False
+

@@ -341,3 +341,5 @@ class StrategyEditor (tk.Frame):
             for param, value in extra_params.items():
                 if value is not None:
                     self.additional_parameters[b_index][param] = value
+
+

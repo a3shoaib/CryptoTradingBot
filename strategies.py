@@ -345,3 +345,5 @@ class BreakoutStrategy(Strategy):
 
             if signal_result in [1, -1]:
                 self._open_position(signal_result)
+
+
