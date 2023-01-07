@@ -105,10 +105,11 @@ class BinanceFuturesClient:
         return contracts
 
     def get_historical_candles(self, contract: Contract, interval: str) -> typing.List[Candle]:
-        data = dict()
-        data['symbol'] = contract.symbol
-        data['interval'] = interval
-        data['limit'] = 1000
+        data = {
+        'symbol': contract.symbol,
+        'interval': interval,
+        'limit': 1000
+        }
 
         raw_candles = self._make_request("GET", "/fapi/v1/klines", data)
 
@@ -121,8 +122,9 @@ class BinanceFuturesClient:
         return candles
 
     def get_bid_ask(self, contract: Contract) -> typing.Dict[str, float]:
-        data = dict()
-        data['symbol'] = contract.symbol
+        data = {
+        'symbol': contract.symbol
+        }
         ob_data = self._make_request("GET", "/fapi/v1/ticker/bookTicker", data)
 
         if ob_data is not None:
@@ -135,8 +137,9 @@ class BinanceFuturesClient:
             return self.prices[contract.symbol]
 
     def get_balances(self) -> typing.Dict[str, Balance]:
-        data = dict()
-        data['timestamp'] = int(time.time() * 1000)
+        data = {
+        'timestamp': int(time.time() * 1000)
+        }
         data['signature'] = self._generate_signature(data)
 
         balances = dict()
@@ -150,11 +153,12 @@ class BinanceFuturesClient:
         return balances
 
     def place_order(self, contract: Contract, order_type: str, quantity: float, side: str, price=None, tif=None) -> OrderStatus:
-        data = dict()
-        data['symbol'] = contract.symbol
-        data['side'] = side.upper()
-        data['quantity'] = round(round(quantity / contract.lot_size) * contract.lot_size, 8)
-        data['type'] = order_type
+        data = {
+        'symbol': contract.symbol,
+        'side': side.upper(),
+        'quantity': round(round(quantity / contract.lot_size) * contract.lot_size, 8),
+        'type': order_type
+        }
 
         if price is not None:
             data['price'] = round(round(price / contract.tick_size) * contract.tick_size, 8)
@@ -174,11 +178,11 @@ class BinanceFuturesClient:
 
     def cancel_order(self, contract: Contract, order_id: int) -> OrderStatus:
 
-        data = dict()
-        data['orderId'] = order_id
-        data['symbol'] = contract.symbol
-
-        data['timestamp'] = int(time.time() * 1000)
+        data = {
+        'orderId': order_id,
+        'symbol': contract.symbol,
+        'timestamp': int(time.time() * 1000)
+        }
         data['signature'] = self._generate_signature(data)
 
         order_status = self._make_request("DELETE", "/fapi/v1/order", data)
@@ -191,10 +195,11 @@ class BinanceFuturesClient:
 
     def get_order_status(self, contract: Contract, order_id: int) -> OrderStatus:
 
-        data = dict()
-        data['timestamp'] = int(time.time() * 1000)
-        data['symbol'] = contract.symbol
-        data['orderId'] = order_id
+        data = {
+        'timestamp': int(time.time() * 1000),
+        'symbol': contract.symbol,
+        'orderId': order_id
+        }
         data['signature'] = self._generate_signature(data)
 
 
@@ -275,9 +280,10 @@ class BinanceFuturesClient:
 
     # Class method to suscribe to a channel to recieve market data
     def subscribe_channel(self, contracts: typing.List[Contract], channel: str):
-        data = dict()
-        data['method'] = "SUBSCRIBE"
-        data['params'] = []
+        data = {
+        'method': "SUBSCRIBE",
+        'params': []
+        }
 
         for contract in contracts:
             data['params'].append(contract.symbol.lower() + "@" + channel)

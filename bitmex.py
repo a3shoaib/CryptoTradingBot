@@ -64,11 +64,12 @@ class BitmexClient:
 
     def _make_request(self, method: str, endpoint: str, data: typing.Dict):
 
-        headers = dict()
         expires = str(int(time.time()) + 5)
-        headers['api-expires'] = expires
-        headers['api-key'] = self._public_key
-        headers['api-signature'] = self._generate_signature(method, endpoint, expires, data)
+        headers = {
+        'api-expires': expires,
+        'api-key': self._public_key,
+        'api-signature': self._generate_signature(method, endpoint, expires, data)
+        }
 
         if method == "GET":
             try:
@@ -113,8 +114,9 @@ class BitmexClient:
         return collections.OrderedDict(sorted(contracts.items()))
 
     def get_balances(self) -> typing.Dict[str, Balance]:
-        data = dict()
-        data['currency'] = "all"
+        data = {
+        'currency': "all"
+        }
 
         margin_data = self._make_request("GET", "/api/v1/user/margin", data)
 
@@ -127,13 +129,13 @@ class BitmexClient:
         return balances
 
     def get_historical_candles(self, contract: Contract, timeframe: str) -> typing.List[Candle]:
-        data = dict()
-
-        data['symbol'] = contract.symbol
-        data['partial'] = True
-        data['binSize'] = timeframe
-        data['count'] = 500
-        data['reverse'] = True
+        data = {
+        'symbol': contract.symbol,
+        'partial': True,
+        'binSize': timeframe,
+        'count': 500,
+        'reverse': True
+        }
 
         raw_candles = self._make_request("GET", "/api/v1/trade/bucketed", data)
 
@@ -169,8 +171,9 @@ class BitmexClient:
         return order_status
 
     def cancel_order(self, order_id: str) -> OrderStatus:
-        data = dict()
-        data['orderID'] = order_id
+        data = {
+        'orderID': order_id
+        }
 
         order_status = self._make_request("DELETE", "/api/v1/order", data)
 
@@ -181,9 +184,10 @@ class BitmexClient:
 
     def get_order_status(self, contract: Contract, order_id: str) -> OrderStatus:
 
-        data = dict()
-        data['symbol'] = contract.symbol
-        data['reverse'] = True
+        data = {
+        'symbol': contract.symbol,
+        'reverse': True
+        }
 
         order_status = self._make_request("GET", "/api/v1/order", data)
 
@@ -290,9 +294,11 @@ class BitmexClient:
 
     # Class method to subscribe to a channel to recieve market data
     def subscribe_channel(self, topic: str):
-        data = dict()
-        data['op'] = "subscribe"
-        data['args'] = []
+
+        data = {
+        'op': "subscribe",
+        'args': []
+        }
         data['args'].append(topic)
 
         try:
